@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/jms
+	http://www.springframework.org/schema/jms/spring-jms-3.0.xsd">
+
+
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+		<property name="location">
+			<value>file:./config-env-sender.properties</value>
+		</property>
+	</bean>
+
+	<bean id="stepConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${mq.hostname.step}</value>
+		</property>
+		<property name="port">
+			<value>${mq.port.step}</value>
+		</property>
+		<property name="channel">
+			<value>${mq.channel.step}</value>
+		</property>
+		<property name="queueManager">
+			<value>${mq.queuemanager.step}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>
+
+	<bean id="messageSender" class="com.message.publisher.MessageSender">
+		<property name="jmsDestination" ref="jmsDestination" />
+		<property name="jmsTemplateStep" ref="jmsTemplateStep" />
+	</bean>
+
+	<bean id="jmsDestination" class="com.ibm.mq.jms.MQQueue">
+		<constructor-arg value="${mq.queuename.step}" />
+	</bean>
+	
+	<bean id="exceptionListener" class="com.message.publisher.CustomException">		
+	</bean>
+		
+	<bean id="springConnectionFactory"
+		class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="stepConnectionFactory" />
+	</bean>
+
+	<bean id="jmsTemplateStep" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="springConnectionFactory" />
+		<property name="defaultDestination" ref="jmsDestination" />
+	</bean>
+
+	<context:component-scan base-package="com.message.publisher">
+	</context:component-scan>
+
+</beans>

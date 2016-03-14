@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/jms
+	http://www.springframework.org/schema/jms/spring-jms-3.0.xsd">
+
+
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+		<property name="location">
+			<value>file:./config-env-receiver.properties</value>
+		</property>
+	</bean>
+
+	<bean id="stepConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${mq.hostname.step}</value>
+		</property>
+		<property name="port">
+			<value>${mq.port.step}</value>
+		</property>
+		<property name="channel">
+			<value>${mq.channel.step}</value>
+		</property>
+		<property name="queueManager">
+			<value>${mq.queuemanager.step}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>
+
+	<bean id="jmsDestination" class="com.ibm.mq.jms.MQQueue">
+		<constructor-arg value="${mq.queuename.step}" />
+	</bean>
+	<bean
+		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="stepConnectionFactory" />
+		<property name="sessionTransacted" value="true" />
+		<property name="destinationName" value="${mq.queuename.step}" />
+		<property name="exceptionListener" ref="exceptionListener" />
+		<property name="messageListener" ref="stepOutListenerItemCreateUpdate" />
+	</bean>
+	<bean id="exceptionListener" class="com.message.view.CustomException">		
+	</bean>
+		<bean id="stepOutListenerItemCreateUpdate"
+		class="com.message.view.WMQueueMessageConsumer">
+			</bean>
+	<bean id="springConnectionFactory"
+		class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="stepConnectionFactory" />
+	</bean>
+
+	<bean id="jmsTemplateStep" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="springConnectionFactory" />
+		<property name="defaultDestination" ref="jmsDestination" />
+	</bean>
+
+	<context:component-scan base-package="com.message.view">
+	</context:component-scan>
+
+</beans>
