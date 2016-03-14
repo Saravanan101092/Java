@@ -28,7 +28,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 	public static final String FILECOUNTSTR = "FILECOUNT::";
 	public static final String USRMSGSTR = "USRMSG::";
 	public static final String KEYWORDSTR = "KEYWORD::";
-	
+	public List<String> keywordsList;
 	FileReader fileReader;
 	BufferedReader reader;
 	String tempString;
@@ -133,12 +133,180 @@ public class XSVProcessor extends SwingWorker<String, String> {
 		}else if(MainWindowFrame.chckbxSplitFiles.isSelected() && MainWindowFrame.chckbxFindTextIn.isSelected()  && !MainWindowFrame.delimiterCheckBox.isSelected()){
 			publish(USRMSGSTR+"Retrieve lines that contain the keyword :'"+MainWindowFrame.lblKeyword.getText()+"' from all the input files. Output files contain"+MainWindowFrame.noOfLinesText.getText()+" lines each.");
 			findKeywordAndSplit(MainWindowFrame.validFiles);
-		}else if(MainWindowFrame.delimiterCheckBox.isSelected()){
-			publish(USRMSGSTR+"Processing the file(s) based on delimiter.");
+		}else if(MainWindowFrame.delimiterCheckBox.isSelected() && !MainWindowFrame.textField_3.getText().equalsIgnoreCase("")){
+			publish(USRMSGSTR+"Processing the file(s) based on delimiter, searching the entered keyword.");
 			processFilesBasedonDelimiter(MainWindowFrame.validFiles);
+		}else if(MainWindowFrame.delimiterCheckBox.isSelected() && MainWindowFrame.keywords!=null && MainWindowFrame.keywords.length>0){
+			publish(USRMSGSTR+"Processing the file(s) based on delimiter, Searching for the keywords in the file.");
+			processFilesBasedonDelimiterKeywords(MainWindowFrame.validFiles,MainWindowFrame.keywords);
 		}
 
 		return "";
+	}
+
+	private void processFilesBasedonDelimiterKeywords(List<File> validFiles, String[] keywords) {
+
+		
+		boolean splitFiles = MainWindowFrame.chckbxSplitFiles.isSelected();
+		String delimiter = MainWindowFrame.delimiter;
+		String[] headers = MainWindowFrame.headers;
+		
+		//get value from file()
+		boolean searchAllColumns = false;
+		if(MainWindowFrame.comboBox_1.getSelectedIndex()==0)
+		{
+			searchAllColumns=true;
+		}	
+		
+		if(searchAllColumns){
+			processDelimiterFilesAllColumnsKeywords(validFiles, delimiter, splitFiles,keywords);
+		}else{
+			int column = MainWindowFrame.comboBox_1.getSelectedIndex();
+			processDelimiterFilesAtColumnKeywords(column-1, validFiles, delimiter, splitFiles, keywords);
+		}
+		
+	}
+
+
+	private void processDelimiterFilesAtColumnKeywords(int i, List<File> validFiles, String delimiter, boolean splitFiles,String[] keywords) {
+
+		List<String> keywordslist = convertArrayToList(keywords);
+		long totalNoOfLines = 0;
+		int fileCount=1;
+		int MaxLinesPerOutputFile=0;
+		if(splitFiles){
+			MaxLinesPerOutputFile = Integer.parseInt(MainWindowFrame.noOfLinesText.getText());
+		}
+		int recordCountInCurrentFile =0;
+		long keywordFoundCount=0;
+		
+		File firstFile = validFiles.get(0);
+		String extension = firstFile.getName().substring(firstFile.getName().lastIndexOf("."));
+		String filenameWOExtension = firstFile.getName().substring(0,firstFile.getName().lastIndexOf("."));
+		String dateStr = Long.toString(new Date().getTime());
+		File outputFile = new File(MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension);
+		FileWriter writer;
+		try {
+			writer = new FileWriter(outputFile,true);
+			for(File file : validFiles){
+				publish(CONSOLESTR+"Processing Input File :"+file.getName());
+				fileReader = new FileReader(file);
+				reader = new BufferedReader(fileReader);
+
+				while ((tempString = reader.readLine()) != null) {
+					totalNoOfLines++;
+					if ((splitFiles) && (recordCountInCurrentFile == MaxLinesPerOutputFile)) {
+						publish(FILECOUNTSTR+fileCount);
+						fileCount++;
+						String outputFileStr=MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension;
+						publish(CONSOLESTR+"Writing output file : "+filenameWOExtension+dateStr+"_"+fileCount+"."+extension);
+						outputFile = new File(outputFileStr);
+						recordCountInCurrentFile = 0;
+						writer.close();
+						writer = new FileWriter(outputFile, true);
+						System.out.println("writing file no:"+fileCount);
+					}
+					
+					String[] splittedValues = tempString.split(delimiter, -1);
+					if(keywordslist.contains(splittedValues[i])){
+						writer.write(tempString + "\n");
+						keywordFoundCount++;
+						publish(KEYWORDSTR+keywordFoundCount);
+					}
+					recordCountInCurrentFile++;
+				}
+				publish(ROWCOUNTSTR+totalNoOfLines);
+				reader.close();
+			}
+			writer.close();
+			publish(FILECOUNTSTR+fileCount);
+			publish(CONSOLESTR+"PROCESS COMPLETED.");
+		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null,
+					"Exception!");
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	
+		
+	}
+
+	public List<String> convertArrayToList(String[] arr){
+		
+		keywordsList=new ArrayList<String>();
+		for(int i=0;i<arr.length;i++){
+			keywordsList.add(arr[i]);
+		}
+		return keywordsList;
+	}
+	private void processDelimiterFilesAllColumnsKeywords(List<File> validFiles, String delimiter, boolean splitFiles,String[] keywords) {
+		List<String> keywordslist = convertArrayToList(keywords);
+		long totalNoOfLines = 0;
+		int fileCount=1;
+		int MaxLinesPerOutputFile=0;
+		if(splitFiles){
+			MaxLinesPerOutputFile = Integer.parseInt(MainWindowFrame.noOfLinesText.getText());
+		}
+		int recordCountInCurrentFile =0;
+		long keywordFoundCount=0;
+		
+		File firstFile = validFiles.get(0);
+		String extension = firstFile.getName().substring(firstFile.getName().lastIndexOf("."));
+		String filenameWOExtension = firstFile.getName().substring(0,firstFile.getName().lastIndexOf("."));
+		String dateStr = Long.toString(new Date().getTime());
+		File outputFile = new File(MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension);
+		FileWriter writer;
+		try {
+			writer = new FileWriter(outputFile,true);
+			for(File file : validFiles){
+				publish(CONSOLESTR+"Processing Input File :"+file.getName());
+				fileReader = new FileReader(file);
+				reader = new BufferedReader(fileReader);
+
+				while ((tempString = reader.readLine()) != null) {
+					totalNoOfLines++;
+					if ((splitFiles) && (recordCountInCurrentFile == MaxLinesPerOutputFile)) {
+						publish(FILECOUNTSTR+fileCount);
+						fileCount++;
+						String outputFileStr=MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension;
+						publish(CONSOLESTR+"Writing output file : "+filenameWOExtension+dateStr+"_"+fileCount+"."+extension);
+						outputFile = new File(outputFileStr);
+						recordCountInCurrentFile = 0;
+						writer.close();
+						writer = new FileWriter(outputFile, true);
+						System.out.println("writing file no:"+fileCount);
+					}
+					
+					String[] splittedValues = tempString.split(delimiter, -1);
+					for(String str : splittedValues){
+						if(keywordslist.contains(str)){
+							writer.write(tempString + "\n");
+							keywordFoundCount++;
+							publish(KEYWORDSTR+keywordFoundCount);
+							break;
+						}
+					}
+					recordCountInCurrentFile++;
+				}
+				publish(ROWCOUNTSTR+totalNoOfLines);
+				reader.close();
+			}
+			writer.close();
+			publish(FILECOUNTSTR+fileCount);
+			publish(CONSOLESTR+"PROCESS COMPLETED.");
+		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null,
+					"Exception!");
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	
+	
+		
 	}
 
 	public void processFilesBasedonDelimiter(List<File> inputFiles){

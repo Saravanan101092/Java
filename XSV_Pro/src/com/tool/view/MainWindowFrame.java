@@ -89,6 +89,10 @@ public class MainWindowFrame {
 	private JLabel lblLookForValue;
 	private JLabel lblSelectColumn;
 	public static JLabel lblKeywordsCount;
+	public static String[] keywords=null;
+	public static JTextField textField_2;
+	public static File keywordFile;
+	private JButton btnChooseFileContaining;
 	/**
 	 * Launch the application.
 	 */
@@ -352,7 +356,7 @@ public class MainWindowFrame {
 		lblLookForValue.setBounds(10, 349, 118, 14);
 		panel.add(lblLookForValue);
 		
-		JButton btnChooseFileContaining = new JButton("Choose file containing");
+		btnChooseFileContaining = new JButton("Choose file containing");
 		btnChooseFileContaining.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chooseFileContainingValues(e);
@@ -364,6 +368,21 @@ public class MainWindowFrame {
 		lblKeywordsCount = new JLabel("Keywords count : 0");
 		lblKeywordsCount.setBounds(511, 420, 147, 14);
 		panel.add(lblKeywordsCount);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(438, 348, 321, 20);
+		panel.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				cancelButtonAction(e);
+			}
+		});
+		btnCancel.setBounds(694, 347, 65, 23);
+		panel.add(btnCancel);
 		
 		frmXsvpro.setBackground(Color.GRAY);
 		frmXsvpro.setTitle("XSVPro");
@@ -625,7 +644,19 @@ public class MainWindowFrame {
 		}
 	}
 	
+	private void cancelButtonAction(ActionEvent e){
+		
+		btnChooseFileContaining.setEnabled(false);
+		textField_2.setEditable(false);
+		textField_3.setEditable(true);
+		textField_3.setEnabled(true);
+	}
+	
 	private void chooseFileContainingValues(ActionEvent e){
 		
+		KeywordFileChooser keywordFileChooser = new KeywordFileChooser();
+		keywordFileChooser.setVisible(true);
+		textField_3.setText("");
+		textField_3.setEnabled(false);
 	}
 }
