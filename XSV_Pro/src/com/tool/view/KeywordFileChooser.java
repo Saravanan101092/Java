@@ -175,7 +175,7 @@ public class KeywordFileChooser extends JDialog {
 		
 		String delimiter = textField_1.getText();
 		String keywordString = textArea.getText();
-		String[] keywords = keywordString.split(delimiter,-1);
+		keywords = keywordString.split(delimiter,-1);
 		textArea_1.setText("");
 		for(int i=0;i<keywords.length;i++){
 			textArea_1.setText(textArea_1.getText().concat("\n"+keywords[i]));

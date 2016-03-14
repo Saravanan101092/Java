@@ -33,6 +33,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 	BufferedReader reader;
 	String tempString;
 
+	
 	long timestamp;
 	FileWriter writer;
 	String outputPath;
@@ -123,6 +124,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 	}
 	
 	public String doInBackground() throws Exception {
+		MainWindowFrame.frmXsvpro.setEnabled(false);
 		publish(CONSOLESTR+"Loaded "+MainWindowFrame.validFiles.size()+" input files.");
 		if(MainWindowFrame.chckbxSplitFiles.isSelected() && !MainWindowFrame.chckbxFindTextIn.isSelected() && !MainWindowFrame.delimiterCheckBox.isSelected()){
 			publish(USRMSGSTR+"Simple File Splitting. Output Files will have "+MainWindowFrame.noOfLinesText.getText()+" lines each.");
@@ -185,7 +187,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 		String filenameWOExtension = firstFile.getName().substring(0,firstFile.getName().lastIndexOf("."));
 		String dateStr = Long.toString(new Date().getTime());
 		File outputFile = new File(MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension);
-		FileWriter writer;
+		FileWriter writer = null;
 		try {
 			writer = new FileWriter(outputFile,true);
 			for(File file : validFiles){
@@ -211,13 +213,15 @@ public class XSVProcessor extends SwingWorker<String, String> {
 					if(keywordslist.contains(splittedValues[i])){
 						writer.write(tempString + "\n");
 						keywordFoundCount++;
+						recordCountInCurrentFile++;
 						publish(KEYWORDSTR+keywordFoundCount);
 					}
-					recordCountInCurrentFile++;
+					
 				}
 				publish(ROWCOUNTSTR+totalNoOfLines);
 				reader.close();
 			}
+			System.out.println("Closing final writer.");
 			writer.close();
 			publish(FILECOUNTSTR+fileCount);
 			publish(CONSOLESTR+"PROCESS COMPLETED.");
@@ -227,6 +231,14 @@ public class XSVProcessor extends SwingWorker<String, String> {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally{
+			if(writer!=null){
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			}
 		}
 		
 	
@@ -257,7 +269,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 		String filenameWOExtension = firstFile.getName().substring(0,firstFile.getName().lastIndexOf("."));
 		String dateStr = Long.toString(new Date().getTime());
 		File outputFile = new File(MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension);
-		FileWriter writer;
+		FileWriter writer = null;
 		try {
 			writer = new FileWriter(outputFile,true);
 			for(File file : validFiles){
@@ -284,11 +296,12 @@ public class XSVProcessor extends SwingWorker<String, String> {
 						if(keywordslist.contains(str)){
 							writer.write(tempString + "\n");
 							keywordFoundCount++;
+							recordCountInCurrentFile++;
 							publish(KEYWORDSTR+keywordFoundCount);
 							break;
 						}
 					}
-					recordCountInCurrentFile++;
+					
 				}
 				publish(ROWCOUNTSTR+totalNoOfLines);
 				reader.close();
@@ -302,6 +315,14 @@ public class XSVProcessor extends SwingWorker<String, String> {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally{
+			if(writer!=null){
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			}
 		}
 		
 	
@@ -337,7 +358,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 
 		long totalNoOfLines = 0;
 		long keywordFoundCount=0;
-		FileWriter writer;
+		FileWriter writer = null;
 		File firstFile = inputFiles.get(0);
 		String extension = firstFile.getName().substring(firstFile.getName().lastIndexOf("."));
 		String filenameWOExtension = firstFile.getName().substring(0,firstFile.getName().lastIndexOf("."));
@@ -381,6 +402,14 @@ public class XSVProcessor extends SwingWorker<String, String> {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally{
+			if(writer!=null){
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			}
 		}
 	}
 
@@ -396,7 +425,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 		String dateStr = Long.toString(new Date().getTime());
 		File outputFile = new File(MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension);
 		String keyword = MainWindowFrame.lblKeyword.getText();
-		FileWriter writer;
+		FileWriter writer = null;
 		try {
 			writer = new FileWriter(outputFile,true);
 			for(File file : inputFiles){
@@ -459,6 +488,14 @@ public class XSVProcessor extends SwingWorker<String, String> {
 			JOptionPane.showMessageDialog(MainWindowFrame.frmXsvpro,
 					"Exception! try again!");
 			e.printStackTrace();
+		} finally{
+			if(writer!=null){
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			}
 		}
 	}
 
@@ -473,7 +510,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 		String filenameWOExtension = firstFile.getName().substring(0,firstFile.getName().lastIndexOf("."));
 		String dateStr = Long.toString(new Date().getTime());
 		File outputFile = new File(MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension);
-		FileWriter writer;
+		FileWriter writer = null;
 		try {
 			writer = new FileWriter(outputFile,true);
 			for(File file : inputFiles){
@@ -509,6 +546,14 @@ public class XSVProcessor extends SwingWorker<String, String> {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally{
+			if(writer!=null){
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			}
 		}
 	}
 
@@ -529,7 +574,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 		String filenameWOExtension = firstFile.getName().substring(0,firstFile.getName().lastIndexOf("."));
 		String dateStr = Long.toString(new Date().getTime());
 		File outputFile = new File(MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension);
-		FileWriter writer;
+		FileWriter writer = null;
 		try {
 			writer = new FileWriter(outputFile,true);
 			for(File file : files){
@@ -556,11 +601,12 @@ public class XSVProcessor extends SwingWorker<String, String> {
 						if(str.equalsIgnoreCase(value)){
 							writer.write(tempString + "\n");
 							keywordFoundCount++;
+							recordCountInCurrentFile++;
 							publish(KEYWORDSTR+keywordFoundCount);
 							break;
 						}
 					}
-					recordCountInCurrentFile++;
+					
 				}
 				publish(ROWCOUNTSTR+totalNoOfLines);
 				reader.close();
@@ -574,6 +620,14 @@ public class XSVProcessor extends SwingWorker<String, String> {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally{
+			if(writer!=null){
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			}
 		}
 		
 	
@@ -595,7 +649,7 @@ public class XSVProcessor extends SwingWorker<String, String> {
 		String filenameWOExtension = firstFile.getName().substring(0,firstFile.getName().lastIndexOf("."));
 		String dateStr = Long.toString(new Date().getTime());
 		File outputFile = new File(MainWindowFrame.outputFolder+File.separator+filenameWOExtension+dateStr+"_"+fileCount+extension);
-		FileWriter writer;
+		FileWriter writer = null;
 		try {
 			writer = new FileWriter(outputFile,true);
 			for(File file : files){
@@ -621,9 +675,10 @@ public class XSVProcessor extends SwingWorker<String, String> {
 					if(splittedValues[column].equalsIgnoreCase(value)){
 						writer.write(tempString + "\n");
 						keywordFoundCount++;
+						recordCountInCurrentFile++;
 						publish(KEYWORDSTR+keywordFoundCount);
 					}
-					recordCountInCurrentFile++;
+					
 				}
 				publish(ROWCOUNTSTR+totalNoOfLines);
 				reader.close();
@@ -637,6 +692,14 @@ public class XSVProcessor extends SwingWorker<String, String> {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally{
+			if(writer!=null){
+			try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			}
 		}
 		
 	}
@@ -666,121 +729,12 @@ public class XSVProcessor extends SwingWorker<String, String> {
 
 	@Override
 	protected void done() {
+		MainWindowFrame.frmXsvpro.setEnabled(true);
 		JOptionPane.showMessageDialog(null,
 				"Operation completed! ouputfiles generated!");
 		MainWindowFrame.txtAreaMessageForUser.setText("ouputfiles Generated @" + MainWindowFrame.outputFolder.getAbsolutePath());
 	}
 
-
-	////////////////////////////////////////////////////
-
-	public void writeToFile(List<String> records, int fileCount, String outputPath, String filename, String extension)
-			throws IOException {
-		File file = new File(outputPath+File.separator+filename+"_"+ fileCount + extension);
-		if (!file.getParentFile().exists()) {
-			file.getParentFile().mkdirs();
-		}
-		outputPath = file.getParentFile().getPath();
-		writer = new FileWriter(file, true);
-		for (String record : records) {
-			writer.write(record + "\n");
-		}
-		writer.close();
-	}
-
-	public void splitPriyanka(File[] filesInFolder){
-		int recordCount = 1;
-		List<String> outputRecords = new ArrayList<String>();
-		timestamp = new Date().getTime();
-		int filecount = 1;
-		for (int filesIterator = 0; filesIterator < filesInFolder.length; filesIterator++) {
-			System.out.println("Processing file..."
-					+ filesInFolder[filesIterator].getName());
-			try {
-				fileReader = new FileReader(filesInFolder[filesIterator]);
-				reader = new BufferedReader(fileReader);
-				File file = new File("D:/saravanan/XSVProFiles/OuputFile_" + timestamp
-						+ "_" + filecount + ".xsv");
-				writer = new FileWriter(file, true);
-
-				while ((tempString = reader.readLine()) != null) {
-					if (recordCount > 50000) {
-						recordCount = 0;
-						writer.close();
-						filecount++;
-						file = new File("D:/saravanan/XSVProFiles/OuputFile_" + timestamp
-								+ "_" + filecount + ".xsv");
-						writer = new FileWriter(file, true);
-						System.out.println("writing file no:"+filecount);
-					}
-					writer.write(tempString + "\n");
-					recordCount++;
-				}
-				reader.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch(Exception e){
-				e.printStackTrace();
-			}
-		}
-		//	if (recordCount > 0) {
-		//		try {
-		//			writeToFile(outputRecords, filecount);
-		//		} catch (IOException e) {
-		//			e.printStackTrace();
-		//		}
-		//	}
-	}
-	public boolean doesRecordContain(String[] valuesInRecord, String keyword,
-			boolean isExact, String[] manyKeywords, boolean isKeywordFile) {
-
-		Date starttime = new Date();
-		if (!isKeywordFile) {
-			for (int i = 0; i < valuesInRecord.length; i++) {
-				if (isExact) {
-					if (valuesInRecord[i].equals(keyword)) {
-						return true;
-					}
-				} else {
-					if (valuesInRecord[i].contains(keyword)) {
-						return true;
-					}
-				}
-			}
-			return false;
-		} else {
-
-			if (isExact) {
-				for (int keyworditerator = 0; keyworditerator < manyKeywords.length; keyworditerator++) {
-					for(int valuesIterator=0;valuesIterator<valuesInRecord.length;valuesIterator++){
-						if (valuesInRecord[valuesIterator]
-								.equals(manyKeywords[keyworditerator])) {
-							return true;
-						}
-					}
-				}
-			} else {
-				for (int keyworditerator = 0; keyworditerator < manyKeywords.length; keyworditerator++) {
-					if(valuesInRecord.length>2){
-						try{
-							if (valuesInRecord[2]
-									.contains(manyKeywords[keyworditerator])) {
-
-								System.out.println("valuesinRecord="+valuesInRecord[2]+" keyword="+manyKeywords[keyworditerator]);
-								return true;
-							}
-						}catch(Exception e){
-							return false;
-						}
-					}
-				}
-			}
-		}
-		Date endtime = new Date();
-		return false;
-	}
 
 
 	public static void main(String[] args){

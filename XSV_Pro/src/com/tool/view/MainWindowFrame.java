@@ -301,7 +301,7 @@ public class MainWindowFrame {
 		
 		textField_3 = new JTextField();
 		textField_3.setEnabled(false);
-		textField_3.setBounds(138, 348, 133, 20);
+		textField_3.setBounds(138, 348, 156, 20);
 		panel.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -310,6 +310,7 @@ public class MainWindowFrame {
 		panel.add(lblTotalNoOf);
 		
 		lblNoOfOutput = new JLabel("No of output files created : 0");
+		lblNoOfOutput.setToolTipText("No of output files created and closed. Doesn't include the one currently being written.");
 		lblNoOfOutput.setBounds(263, 420, 181, 14);
 		panel.add(lblNoOfOutput);
 		
@@ -356,32 +357,35 @@ public class MainWindowFrame {
 		lblLookForValue.setBounds(10, 349, 118, 14);
 		panel.add(lblLookForValue);
 		
-		btnChooseFileContaining = new JButton("Choose file containing");
+		btnChooseFileContaining = new JButton("Choose file");
+		btnChooseFileContaining.setToolTipText("Click this button to choose more than one keyword from a file. clicking this will open a dialog.");
 		btnChooseFileContaining.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chooseFileContainingValues(e);
 			}
 		});
-		btnChooseFileContaining.setBounds(287, 347, 141, 23);
+		btnChooseFileContaining.setBounds(319, 347, 101, 23);
 		panel.add(btnChooseFileContaining);
 		
 		lblKeywordsCount = new JLabel("Keywords count : 0");
+		lblKeywordsCount.setToolTipText("No of instance of entered keyword(s) encountered so far");
 		lblKeywordsCount.setBounds(511, 420, 147, 14);
 		panel.add(lblKeywordsCount);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(438, 348, 321, 20);
+		textField_2.setBounds(438, 348, 237, 20);
 		panel.add(textField_2);
 		textField_2.setColumns(10);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.setToolTipText("Click to cancel choosing from a file. Enables the textfield to enter single keyword.");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				cancelButtonAction(e);
 			}
 		});
-		btnCancel.setBounds(694, 347, 65, 23);
+		btnCancel.setBounds(685, 347, 74, 23);
 		panel.add(btnCancel);
 		
 		frmXsvpro.setBackground(Color.GRAY);
@@ -469,7 +473,7 @@ public class MainWindowFrame {
 							JOptionPane.showMessageDialog(this.frmXsvpro,"Select a delimiter.");
 						}else{
 							delimiter=textField_1.getText();
-							if(textField_3.getText().equalsIgnoreCase("")){
+							if(textField_3.getText().equalsIgnoreCase("") && !btnChooseFileContaining.isEnabled() && keywords==null){
 								JOptionPane.showMessageDialog(this.frmXsvpro,"Please enter a value for look for in the delimiterized file.");
 							}else{
 							xsvProcessor = new XSVProcessor();
@@ -478,7 +482,7 @@ public class MainWindowFrame {
 						}
 					}else{
 						
-						if(textField_3.getText().equalsIgnoreCase("")){
+						if(textField_3.getText().equalsIgnoreCase("") && !btnChooseFileContaining.isEnabled() && keywords==null){
 							JOptionPane.showMessageDialog(this.frmXsvpro,"Please enter a value for look for in the delimiterized file.");
 						}else{
 						xsvProcessor = new XSVProcessor();
