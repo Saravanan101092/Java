@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+	">
+ 
+	<context:component-scan base-package="com.staples.pcm.springbatch.boomerang" />
+	
+  <import resource="file:${SPRING_BATCH_CONFIG_DIR}/database.xml" />
+  <import resource="file:${SPRING_BATCH_CONFIG_DIR}/context.xml" />
+ 
+ 
+	<job id="CSVtoExcelJob" xmlns="http://www.springframework.org/schema/batch">
+		<step id="transformCSV">
+			<tasklet transaction-manager="transactionManager"
+				start-limit="1" allow-start-if-complete="false">
+				<chunk reader="cvsFileItemReader" 
+				writer="excelProductWriter" commit-interval="100">
+				</chunk>
+				  				
+			</tasklet>
+		</step>
+		
+		<listeners>
+			<listener ref="wordFilterJobListner" />
+		</listeners>
+		
+	</job>
+     <bean id="wordFilterJobListner" 
+          class="com.staples.pcm.springbatch.wordfilter.WordFilterJobListner" >
+   
+	</bean> 	
+	
+
+	<!-- ItemReader which reads from database and returns the row mapped by rowMapper -->
+    <bean id="cvsFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+ 
+		<!-- Read a csv file -->
+		<property name="resource" ref="inputFile"/>
+	 	<property name="linesToSkip" value="1" />
+	 
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+			  <!-- split it -->
+			  <property name="lineTokenizer">
+			        <bean
+				  class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+					<property name="names" value="iD,attr1,attr2,attr3,attr4,attr5,attr6,attr7,attr8,attr9,attr10,attr11,attr12,attr13,attr14,attr15,attr16,attr17,attr18,attr19,attr20,attr21,attr22,attr23,attr24,attr25,attr26,attr27,attr28,attr29,attr30,attr31,attr32,attr33,attr34,attr35,attr36" />
+				</bean>
+			  </property>
+			  <property name="fieldSetMapper">   
+			         <!-- return back to reader, rather than a mapped object. -->
+			         <!--
+				 <bean class="org.springframework.batch.item.file.mapping.PassThroughFieldSetMapper" />
+			          --> 
+				  <!-- map to an object -->
+				  <bean
+				    class="org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper">
+					<property name="prototypeBeanName" value="wordFilterPOJO" />
+				  </bean>			
+			  </property>
+	 
+			  </bean>
+		  </property>
+ 
+    </bean>
+
+	<bean id="wordFilterPOJO" class="com.staples.pcm.springbatch.wordfilter.model.WordFilterPOJO" scope="prototype" />
+	<bean id="excelProductWriter" class="com.staples.pcm.springbatch.wordfilter.WordFilterExcelWriter">
+	</bean>
+
+	<bean id="inputFile"
+		class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[inputFile]}" />
+	</bean>
+	<!-- 
+	<bean id="outputFile"
+		class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[outputFile]}" />
+	</bean>
+	 -->
+	<bean id="outputFile3"
+		class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[outputFile3]}" />
+	</bean>
+	
+ 
+</beans>

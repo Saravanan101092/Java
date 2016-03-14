@@ -1,0 +1,88 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch" 
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+
+	<job id="stepTopip" xmlns="http://www.springframework.org/schema/batch">
+		<step id="step1">
+			<tasklet>
+				<chunk reader="multiResourceReader" 
+			writer="wercsItemWriter" processor="stepToPIPProcessor"
+			commit-interval="1000" skip-limit="1000000">
+					<skippable-exception-classes>
+						<include class="java.lang.Exception"/>
+					</skippable-exception-classes>	
+					<listeners>
+						<listener ref="wercsStepToPIPJobListener" />
+					</listeners>
+				</chunk>
+				<listeners>
+					<listener ref="wercsStepToPIPJobListener" />
+				</listeners>
+			</tasklet>
+		</step>
+		<listeners>
+			<listener ref="wercsStepToPIPJobListener" />
+		</listeners>
+	</job>
+
+	<bean id="wercsStepToPIPJobListener" class="com.staples.pim.delegate.wercs.steptopip.runner.WercsStepToPipJobListener" />
+	<!-- Filtering process -->
+	<bean id="stepToPIPProcessor" class="com.staples.pim.delegate.wercs.steptopip.processor.StepToPIPIntgProcessor" >
+		<property name="databaseAccessor" ref="databaseAccess" />
+	</bean>
+	
+
+	<bean id="multiResourceReader" class=" org.springframework.batch.item.file.MultiResourceItemReader">
+		<property name="delegate" ref="xmlItemReader" />
+	</bean>
+
+	<bean id="xmlItemReader" 
+        class="org.springframework.batch.item.xml.StaxEventItemReader">
+		<property name="fragmentRootElementName" value="STEP-ProductInformation" />
+		<property name="unmarshaller" ref="reportUnmarshaller" />
+	</bean>
+
+	<!-- Read and map values to object, via jaxb2 -->
+	<bean id="reportUnmarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="classesToBeBound">
+			<list>
+				<value>com.staples.pcm.stepcontract.beans.STEPProductInformation</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="wercsItemWriter"
+		class="org.springframework.batch.item.file.MultiResourceItemWriter">
+		<property name="delegate" ref="wercsWriter" />
+		<property name="itemCountLimitPerResource" value="3000" />
+		<property name="resource" value="file:C:\\opt\\stibo\\integration\\hotfolder\\WERCSIncoming\\STEPRegistrationRequest\\outputFilewercs.xml" />
+	</bean>
+
+	<bean id="wercsWriter" class="com.staples.pim.delegate.wercs.steptopip.processor.StepToPIPWriter" />
+
+	<bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+
+	<bean id="transactionManager"
+	class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" />
+
+	<bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+		<property name="jobRepository" ref="jobRepository" />
+	</bean>
+
+	<bean id="inputFile"
+		class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[inputFile]}" />
+	</bean>
+
+</beans>

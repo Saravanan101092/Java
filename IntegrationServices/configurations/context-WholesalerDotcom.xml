@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.1.xsd
+	http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+	">
+
+	<import resource="file:${SPRING_BATCH_CONFIG_DIR}/database.xml" />
+	<import resource="file:${SPRING_BATCH_CONFIG_DIR}/context.xml" />
+
+
+	<job id="WholesalerDotcomJob" xmlns="http://www.springframework.org/schema/batch">
+		<step id="transWholesalerDotcomJob">
+			<tasklet>
+				<chunk reader="wholesalerDotcomFeedItemReader" processor="wholesalerDotcomFeedItemProcessor"
+					writer="wholesalerDotcomFeedItemWriter" commit-interval="3000" skip-limit="1000000">
+					<streams>
+						<stream ref="wholesalerDotcomFeedItemReader" />
+						<stream ref="wholesalerDotcomFeedItemWriter" />
+					</streams>
+					<skippable-exception-classes>
+						<include class="java.lang.Exception"/>
+					</skippable-exception-classes>		
+					<listeners>
+						<listener ref="wholesalerDotcomFeedXMLWriter" />
+					</listeners>					
+				</chunk>
+				<listeners>
+					<listener ref="wholesalerDotcomFeedXMLWriter" />
+				</listeners>
+			</tasklet>
+		</step>
+		<listeners>
+			<listener ref="wholesalerDotcomFeedJobListner" />
+		</listeners>
+	</job>
+
+	<bean id="wholesalerDotcomFeedItemWriter"
+		class="org.springframework.batch.item.file.MultiResourceItemWriter">
+		<property name="delegate" ref="wholesalerDotcomFeedXMLWriter" />
+		<property name="itemCountLimitPerResource" value="3000" />
+		<property name="resource" ref="outputFile" />
+	</bean>
+
+
+	<bean id="wholesalerDotcomFeedItemProcessor" class="com.staples.pim.delegate.wholesalers.processor.WholesalerDotcomFeedItemProcessor" />
+	<bean id="wholesalerDotcomFeedXMLWriter" class="com.staples.pim.delegate.wholesalers.writer.WholesalerDotcomFeedXMLWriter" />
+	<bean id="wholesalerDotcomFeedJobListner" class="com.staples.pim.delegate.wholesalers.listenerrunner.WholesalerDotcomFeedJobListner" />
+
+	<bean id="wholesalerDotcomFeedItemReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+		<property name="resource" ref="inputFile" />
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="quoteCharacter" value="`" />
+						<property name="delimiter"  value="~" />
+						<property name="names" value="actionType,wholesalerID,wholesalerItemNo,description,staplesSKUNo,genericSKUNo,upcCode,vendorName,mfgPartNo,productClassCode,productNumber,categoryNumbers,inventoryUnit,boxPackQty,boxPackUnit,cartonPackQty,cartonPackUnit,cartonWeight,cartonLength,cartonWidth,cartonHeight,listQty,listUnit,listPrice,listPriceEffDate,unitCost,costEffDate,commissioningClass,catalogPage,upsableFlag,assemblyRequired,furnitureServicesAllowed,longDescription,dotcomNetPrice,netPrice,itemRefCode,referenceItem,rawWholesalerNo,skuPartType,manFurnFlag2,invSearchClass,assemblyFee,uncrateReqFlag,uncratingFee,qtlyUpdateFlag" />
+					</bean>
+				</property>
+				<property name="fieldSetMapper">
+					<bean class="com.staples.pim.delegate.wholesalers.mapper.WholesalerDotcomFeedFieldSetMapper" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="inputFile" class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[inputFile]}" />
+	</bean>
+	
+	<bean id="outputFile" class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[outputFile]}" />
+	</bean>
+
+</beans>

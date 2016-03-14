@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.1.xsd
+	http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+	">
+
+	<import resource="file:${SPRING_BATCH_CONFIG_DIR}/database.xml" />
+	<import resource="file:${SPRING_BATCH_CONFIG_DIR}/context.xml" />
+
+
+	<job id="WholesalerContractJob" xmlns="http://www.springframework.org/schema/batch">
+		<step id="transWholesalerContractJob">
+			<tasklet>
+				<chunk reader="wholesalerContractFeedItemReader" processor="wholesalerContractFeedItemProcessor"
+					writer="wholesalerContractFeedItemWriter" commit-interval="3000" skip-limit="1000000">
+					<streams>
+						<stream ref="wholesalerContractFeedItemReader" />
+						<stream ref="wholesalerContractFeedItemWriter" />
+					</streams>
+					<skippable-exception-classes>
+						<include class="java.lang.Exception"/>
+					</skippable-exception-classes>		
+					<listeners>
+						<listener ref="wholesalerContractFeedXMLWriter" />
+					</listeners>					
+				</chunk>
+				<listeners>
+					<listener ref="wholesalerContractFeedXMLWriter" />
+				</listeners>
+			</tasklet>
+		</step>
+		<listeners>
+			<listener ref="wholesalerContractFeedJobListner" />
+		</listeners>
+	</job>
+
+	<bean id="wholesalerContractFeedItemWriter"
+		class="org.springframework.batch.item.file.MultiResourceItemWriter">
+		<property name="delegate" ref="wholesalerContractFeedXMLWriter" />
+		<property name="itemCountLimitPerResource" value="3000" />
+		<property name="resource" ref="outputFile" />
+	</bean>
+
+
+	<bean id="wholesalerContractFeedItemProcessor" class="com.staples.pim.delegate.wholesalers.processor.WholesalerContractFeedItemProcessor" />
+	<bean id="wholesalerContractFeedXMLWriter" class="com.staples.pim.delegate.wholesalers.writer.WholesalerContractFeedXMLWriter" />
+	<bean id="wholesalerContractFeedJobListner" class="com.staples.pim.delegate.wholesalers.listenerrunner.WholesalerContractFeedJobListner" />
+
+	<bean id="wholesalerContractFeedItemReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+		<property name="resource" ref="inputFile" />
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="quoteCharacter" value="`" />
+						<property name="delimiter"  value="~" />
+						<property name="names" value="actionType,wholesalerID,wholesalerItemNo,description,staplesSKUNo,genericSKUNo,upcCode,vendorName,mfgPartNo,productClassCode,productNumber,categoryNumbers,inventoryUnit,boxPackQty,boxPackUnit,cartonPackQty,cartonPackUnit,cartonWeight,cartonLength,cartonWidth,cartonHeight,listQty,listUnit,listPrice,listPriceEffDate,unitCost,costEffDate,commissioningClass,catalogPage,upsableFlag,assemblyRequired,furnitureServicesAllowed,basicServicesAvailable,basicServicesPlusAvailable,longDescription,dotcomNetPrice,netPrice,itemRefCode,referenceItem,rawWholesalerNo,skuPartType,manFurnFlag2,invSearchClass,assemblyFee,uncrateReqFlag,uncratingFee,qtlyUpdateFlag,lorEligiblel,lorEligibleForEnrollmentLS1,lorEligibleForEnrollmentLS2,lorEligibleForEnrollmentLS3" />
+					</bean>
+				</property>
+				<property name="fieldSetMapper">
+					<bean class="com.staples.pim.delegate.wholesalers.mapper.WholesalerContractFeedFieldSetMapper" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="inputFile" class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[inputFile]}" />
+	</bean>
+	
+	<bean id="outputFile" class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[outputFile]}" />
+	</bean>
+
+</beans>

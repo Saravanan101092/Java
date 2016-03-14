@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-4.0.xsd
+	">
+  
+	<bean id="runSchedulerWercsRetry" class="com.staples.pim.delegate.wercs.steptowercs.retry.runner.RunSchedulerWercsRetry" />
+	<bean id="runSchedulerPIPToStep" class="com.staples.pim.delegate.wercs.piptostep.listenerrunner.RunSchedulerPIPToStep" />
+	<bean id="runSchedulerCorpdmzToStep" class="com.staples.pim.delegate.wercs.corpdmztostep.runner.RunSchedulerCorpdmzToStep" />
+	<bean id="runSchedulerStepToWercs" class="com.staples.pim.delegate.wercs.steptowercs.runner.RunSchedulerStepToWercs" />
+  <task:scheduled-tasks>
+
+	<task:scheduled ref="runSchedulerWercsRetry" method="run" cron="00 */2 * * * *" />
+	<task:scheduled ref="runSchedulerWercsRetry" method="run" cron="10 45 13 * * *" />
+	<task:scheduled ref="runSchedulerWercsRetry" method="run" cron="59 50 17 * * *" />
+	<!--<task:scheduled ref="runSchedulerPIPToStep" method="run" cron="0 * * * * *" />
+	<task:scheduled ref="runSchedulerCorpdmzToStep" method="run" cron="0 * * * * *" />
+	<task:scheduled ref="runSchedulerStepToWercs" method="run" cron="0 * * * * *" />-->
+   </task:scheduled-tasks>
+ 
+
+</beans>

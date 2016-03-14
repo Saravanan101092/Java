@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/jms
+	http://www.springframework.org/schema/jms/spring-jms-3.0.xsd">
+
+	<!-- <import resource="classpath:database.xml" />-->
+	<import resource="file:${SPRING_BATCH_CONFIG_DIR}/job-item-utility.xml" />
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+		<property name="location">
+			<value>file:${SPRING_BATCH_CONFIG_DIR}/config_env.properties</value>
+		</property>
+	</bean>
+
+	<!-- WebSphere MQ Connection Factory for Galaxy -->
+
+	<bean id="cosmoConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${itemutility.mq.hostname.cosmos}</value>
+		</property>
+		<property name="port">
+			<value>${itemutility.mq.port.cosmos}</value>
+		</property>
+		<property name="channel">
+			<value>${itemutility.mq.channel.cosmos}</value>
+		</property>
+		<property name="queueManager">
+			<value>${itemutility.mq.queuemanager.cosmos}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>
+
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<constructor-arg name="connectionFactory" ref="cosmoConnectionFactory"></constructor-arg>
+	</bean>
+
+	<!--<jms:listener-container container-type="default"
+		connection-factory="cosmoConnectionFactory" acknowledge="transacted">
+		<jms:listener destination="${mq.queuename.cosmos}" ref="galaxyListener"
+			method="onMessage"></jms:listener>
+	</jms:listener-container> -->
+
+	<!-- Added for fail over scenario -->
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="cosmoConnectionFactory" /> 
+		<property name="sessionTransacted" value="true" />
+		<property name="destinationName" value="${itemutility.mq.queuename.cosmos}" />
+		<property name="exceptionListener" ref="exceptionListener" />
+		<property name="messageListener" ref="galaxyListener" />
+	</bean> 
+
+	<bean id="exceptionListener" class="com.staples.pim.delegate.copyandprint.domain.CustomException">	
+	<property name="instanceName" ref="beanInstance" />	
+	</bean>
+	<bean id="beanInstance" class="java.lang.String">
+	<constructor-arg value="itemutility"/>
+	</bean>	
+	<bean id="galaxyListener"
+		class="com.staples.pim.delegate.itemutility.domain.GalaxyOutFileListener">
+		<property name="stepXMLGenerator" ref="stepXMLGenerator" />
+		</bean>
+		
+	<bean id="stepXMLGenerator"
+		class="com.staples.pim.delegate.itemutility.processor.StepXMLGenerator" >
+			<property name="channelSpecDBWriter" ref="channelSpecDBWriter" />
+			<property name="hiddenAttrDBWriter" ref="hiddenAttrDBWriter" />
+			<property name="internalAttrDBWriter" ref="internalAttrDBWriter" />
+			<property name="vendorProvidedAttrDBWriter" ref="vendorProvidedAttrDBWriter" />
+			<!--
+			<property name="stepProductInformation" ref="stepProductInformationBean" />
+			<property name="products" ref="productsBean" />
+			<property name="product" ref="productBean" />
+			<property name="values" ref="valuesBean" />
+			<property name="value" ref="valueBean" />
+			<property name="keyValue" ref="keyValueBean" />-->
+			<property name="objectFactory" ref="objectFactory" /> 
+			<property name="commonVO" ref="commonVOBean" />
+		</bean>
+		
+		<!--
+		<bean id="stepProductInformationBean"
+		class="com.staples.pim.base.common.bean.STEPProductInformation" ></bean>
+		<bean id="productsBean"
+		class="com.staples.pim.base.common.bean.STEPProductInformation.Products" ></bean>
+		<bean id="productBean"
+		class="com.staples.pim.base.common.bean.STEPProductInformation.Products.Product" ></bean>
+		<bean id="valuesBean"
+		class="com.staples.pim.base.common.bean.STEPProductInformation.Products.Product.Values" ></bean>
+		<bean id="valueBean"
+		class="com.staples.pim.base.common.bean.STEPProductInformation.Products.Product.Values.Value" ></bean>
+		<bean id="keyValueBean"
+		class="com.staples.pim.base.common.bean.STEPProductInformation.Products.Product.KeyValue" ></bean>-->
+		<bean id="commonVOBean"
+		class="com.staples.pim.delegate.itemutility.beans.CommonVO" ></bean>
+	<bean id="objectFactory"
+		class="com.staples.pcm.stepcontract.beans.ObjectFactory" ></bean>
+<!-- -->
+	<!-- WebSphere MQ Connection Factory for STEP -->
+
+	<bean id="stepConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${itemutility.mq.hostname.step}</value>
+		</property>
+		<property name="port">
+			<value>${itemutility.mq.port.step}</value>
+		</property>
+		<property name="channel">
+			<value>${itemutility.mq.channel.step}</value>
+		</property>
+		<property name="queueManager">
+			<value>${itemutility.mq.queuemanager.step}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>
+
+	
+	<bean id="jmsDestination" class="com.ibm.mq.jms.MQQueue">
+		<constructor-arg value="${itemutility.mq.queuename.step}" />
+	</bean>
+
+	<bean id="springConnectionFactory"
+		class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="stepConnectionFactory" />
+	</bean>
+
+	<bean id="jmsTemplateStep" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="springConnectionFactory" />
+		<property name="defaultDestination" ref="jmsDestination" />
+	</bean>
+
+	<context:component-scan base-package="com.staples.pcm.springbatch.itemutility">
+	</context:component-scan>
+
+</beans>

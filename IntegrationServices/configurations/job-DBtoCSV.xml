@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+	">
+ 
+	<context:component-scan base-package="com.staples.pcm.springbatch.xmltoxsv" />
+	
+  <import resource="file:${SPRING_BATCH_CONFIG_DIR}/database.xml" />
+  <import resource="file:${SPRING_BATCH_CONFIG_DIR}/context.xml" />
+ 
+ 
+	<job id="DBtoCSVJob" xmlns="http://www.springframework.org/schema/batch">
+		<step id="readDB">
+			<tasklet transaction-manager="transactionManager"
+				start-limit="1" allow-start-if-complete="false">
+				<chunk reader="databaseItemReader" 
+				writer="csvProductWriter" commit-interval="100">
+				</chunk>
+			</tasklet>
+		</step>
+		
+		<listeners>
+			<listener ref="dBtoCSVJobListner" />
+		</listeners>
+		
+	</job>
+     <bean id="dBtoCSVJobListner" 
+          class="com.staples.pcm.springbatch.dbtoxsv.DBtoCSVJobListner" >
+          <property name="ds" ref="dataSource" />
+   
+	</bean> 	
+	
+
+	<!-- ItemReader which reads from database and returns the row mapped by rowMapper -->
+	<bean id="databaseItemReader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader"> 
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="sql">
+		  <value>
+            <![CDATA[        
+SELECT A0012,A0320,A0318,A0239,A0238,A0237,A0240,A0015,Create_TimeStamp,Batch_SKU_Flag_Status 
+FROM ALL_SKU_ATTRIBUTES where  A0012 > 20000000 AND trunc(Create_TimeStamp) BETWEEN TRUNC(SYSDATE - 4) AND TRUNC(SYSDATE-1)
+
+			]]>
+		  </value>
+		</property>
+		<property name="rowMapper"> 
+			<bean class="com.staples.pcm.springbatch.dbtoxsv.SKUFlaggingPOJORowMapper" /> 
+		</property> 
+	</bean> 
+
+	<bean id="csvProductWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+		<!-- write to this csv file -->
+		<property name="resource" ref="outputFile" />
+		<!--
+		<property name="shouldDeleteIfExists" value="false" />
+		-->
+		<property name="appendAllowed" value="true" />
+ 
+		<property name="lineAggregator">
+		  <bean
+			class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
+			<property name="delimiter" value="," />
+			<property name="fieldExtractor">
+			  <bean
+				class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+				<property name="names" value="cSVofValues" />
+			   </bean>
+			</property>
+		   </bean>
+		</property>
+		<!--
+		<property name="footerCallback" ref="xsvHeaderFooterWriter" />
+		-->
+		<property name="headerCallback" ref="csvHeaderFooterWriter" /> 
+		
+	</bean>
+	<bean id="sKUFlaggingPOJO" class="com.staples.pcm.springbatch.dbtoxsv.model.SKUFlaggingPOJO" scope="prototype" />
+
+	<bean id="dbStatusWriter"
+		class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="dataSource" ref="dataSource" />
+		<property name="sql">
+		  <value>
+            <![CDATA[        
+				UPDATE hidden_Attributes
+				set Batch_SKU_Flag_Status = 'Complete'
+				WHERE A0012 = :A0012	            
+			]]>
+		  </value>
+		</property>
+		<!-- It will take care matching between object property and sql name parameter -->
+		<property name="itemSqlParameterSourceProvider">
+			<bean
+			class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+	</bean>
+
+
+	<bean id="csvHeaderFooterWriter" class="com.staples.pcm.springbatch.dbtoxsv.CSVHeaderWriter">
+	</bean> 
+	<bean id="outputFile"
+		class="org.springframework.core.io.FileSystemResource" scope="job">
+		<constructor-arg value="#{jobParameters[outputFile]}" />
+	</bean>
+ 
+</beans>

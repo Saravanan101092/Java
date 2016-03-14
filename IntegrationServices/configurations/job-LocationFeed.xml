@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util-3.1.xsd
+	http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+	">
+
+	<import resource="file:${SPRING_BATCH_CONFIG_DIR}/database.xml" />
+	<import resource="file:${SPRING_BATCH_CONFIG_DIR}/context.xml" />
+
+
+	<job id="fixedLenToXMLJob" xmlns="http://www.springframework.org/schema/batch">
+		<step id="transformFixedLen">
+			<tasklet transaction-manager="transactionManager"
+				start-limit="1" allow-start-if-complete="false">
+				<chunk reader="fixedLenFileItemReader" processor="locationFeedItemProcessor"
+					writer="locationFeedXMLWriter" commit-interval="50">
+				</chunk>
+				<listeners>
+					<listener ref="locationFeedXMLWriter" />
+				</listeners>
+			</tasklet>
+		</step>
+		<listeners>
+			<listener ref="locationFeedJobListner" />
+		</listeners>
+	</job>
+
+	<bean id="fixedLenFileItemReader" class="org.springframework.batch.item.file.FlatFileItemReader">
+
+		<property name="resource" ref="inputFile" />
+
+		<property name="lineMapper">
+			<bean class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="delimiter">
+							<util:constant
+								static-field="org.springframework.batch.item.file.transform.DelimitedLineTokenizer.DELIMITER_TAB" />
+						</property>
+
+						<property name="names"
+							value="locationcode,locationname,locationaddress1,locationaddress2,locationaddress3,locationaddress4,locationcity,locationstate,locationpostalcode,locationcontact,locationphone,locationopendate,bgid,locationfax,businessunit,locationtype,locationregion,locationregionname,locationdist,locationdistname,financiallocationcode" />
+					</bean>
+				</property>
+				<property name="fieldSetMapper">
+
+					<bean
+						class="com.staples.pim.delegate.locationfeed.mapper.LocationFeedFieldSetMapper" />
+
+				</property>
+			</bean>
+		</property>
+
+	</bean>
+	
+	<bean id="locationFeedItemProcessor" class="com.staples.pim.delegate.locationfeed.processor.LocationFeedItemProcessor" />
+	<bean id="locationFeedXMLWriter" class="com.staples.pim.delegate.locationfeed.writer.LocationFeedXMLWriter" />
+	<bean id="locationFeedJobListner" class="com.staples.pim.delegate.locationfeed.listenerrunner.LocationFeedJobListner" />
+
+	<bean id="inputFile" class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[inputFile]}" />
+	</bean>
+	<bean id="outputFile" class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[outputFile]}" />
+	</bean>
+
+</beans>

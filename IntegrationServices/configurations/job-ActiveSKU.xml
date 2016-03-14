@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+	">
+ 
+	<context:component-scan base-package="com.staples.pcm.springbatch.xmltoxsv" />
+	
+  <import resource="file:${SPRING_BATCH_CONFIG_DIR}/database.xml" />
+  <import resource="file:${SPRING_BATCH_CONFIG_DIR}/context.xml" />
+ 
+ 
+	<job id="DBtoCSVJob" xmlns="http://www.springframework.org/schema/batch">
+		<step id="readDB">
+			<tasklet transaction-manager="transactionManager"
+				start-limit="1" allow-start-if-complete="false">
+				<chunk reader="databaseItemReader" 
+				writer="xsvProductWriter" commit-interval="100">
+				</chunk>
+			</tasklet>
+		</step>
+		
+		<listeners>
+			<listener ref="jobListner" />
+		</listeners>
+		
+	</job>
+     <bean id="jobListner" 
+          class="com.staples.pcm.springbatch.activesku.ActiveSKUJobListner" >
+          <property name="ds" ref="dataSource" />
+   
+	</bean> 	
+	
+
+	<!-- ItemReader which reads from database and returns the row mapped by rowMapper -->
+	<bean id="databaseItemReader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader"> 
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="sql">
+		  <value>
+            <![CDATA[        
+SELECT A0075_RET,A0013_RET,A0012,A0018_RET,A0210,A0501 
+FROM ALL_SKU_ATTRIBUTES where A0501 IS NOT NULL AND Batch_ActiveSKU_Status = 'In Progress' 
+ORDER BY A0075_RET
+
+			]]>
+		  </value>
+		</property>
+		<property name="rowMapper"> 
+			<bean class="com.staples.pcm.springbatch.activesku.ActiveSKUPOJORowMapper" /> 
+		</property> 
+	</bean> 
+
+	<bean id="xsvProductWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+		<!-- write to this csv file -->
+		<property name="resource" ref="outputFile" />
+		<!--
+		<property name="shouldDeleteIfExists" value="false" />
+		-->
+		<property name="appendAllowed" value="true" />
+ 
+		<property name="lineAggregator">
+		  <bean
+			class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
+			<property name="delimiter" value="," />
+			<property name="fieldExtractor">
+			  <bean
+				class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+				<property name="names" value="cSVofValues" />
+			   </bean>
+			</property>
+		   </bean>
+		</property>
+		<!--
+		<property name="footerCallback" ref="xsvHeaderFooterWriter" />
+		-->
+		<property name="headerCallback" ref="xsvHeaderFooterWriter" /> 
+		
+	</bean>
+	<bean id="activeSKUPOJO" class="com.staples.pcm.springbatch.activesku.model.ActiveSKUPOJO" scope="prototype" />
+
+
+	<bean id="xsvHeaderFooterWriter" class="com.staples.pcm.springbatch.activesku.ActiveSKUHeaderWriter">
+	</bean> 
+	<bean id="outputFile"
+		class="org.springframework.core.io.FileSystemResource" scope="job">
+		<constructor-arg value="#{jobParameters[outputFile]}" />
+	</bean>
+ 
+</beans>

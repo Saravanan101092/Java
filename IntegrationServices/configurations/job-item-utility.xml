@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+	">
+
+	<context:component-scan base-package="com.staples.pcm.springbatch.itemutility" />
+
+	<import resource="file:${SPRING_BATCH_CONFIG_DIR}/database.xml" />
+
+	<bean id="channelSpecDBWriter"
+		class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="sql">
+			<value>
+				<![CDATA[
+          UPDATE ALL_SKU_ATTRIBUTES SET A0077_RET = CASE WHEN :A0077_RET IS NOT NULL AND :A0410='RET' AND :A0003='List price Update' THEN :A0077_RET 
+WHEN :A0077_RET IS NOT NULL AND :A0410='COR' AND :A0003='List price Update' THEN :A0077_RET ELSE A0077_RET END,
+A0077_NAD = CASE WHEN :A0077_NAD IS NOT NULL AND :A0410='SCC' AND :A0003='List price Update' THEN :A0077_NAD 
+WHEN :A0077_NAD IS NOT NULL AND :A0410='COR' AND :A0003='List price Update' THEN :A0077_NAD ELSE A0077_NAD END,
+A0497_RET = CASE WHEN :A0497_RET IS NOT NULL AND :A0410='RET' AND :A0003='PO Cost Update' THEN :A0497_RET 
+WHEN :A0497_RET IS NOT NULL AND :A0410='COR' AND :A0003='PO Cost Update' THEN :A0497_RET ELSE A0497_RET END,
+A0497_NAD = CASE WHEN :A0497_NAD IS NOT NULL AND :A0410='SCC' AND :A0003='PO Cost Update' THEN :A0497_NAD 
+WHEN :A0497_NAD IS NOT NULL AND :A0410='COR' AND :A0003='PO Cost Update' THEN :A0497_NAD ELSE A0497_NAD END
+
+WHERE A0012 = :A0012
+                ]]>
+			</value>
+		</property>
+		<!-- It will take care matching between object property and sql name parameter -->
+		<property name="itemSqlParameterSourceProvider">
+			<bean
+				class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+	</bean>
+		<bean id="hiddenAttrDBWriter"
+		class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="sql">
+			<value>
+				<![CDATA[
+                  UPDATE ALL_SKU_ATTRIBUTES SET A0020 = CASE WHEN :A0020 IS NOT NULL AND :A0003='Merch Status Update' THEN :A0020 ELSE A0020 END
+                  WHERE A0012 = :A0012
+                ]]>
+			</value>
+		</property>
+		<!-- It will take care matching between object property and sql name parameter -->
+		<property name="itemSqlParameterSourceProvider">
+			<bean
+				class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+	</bean>
+	<bean id="internalAttrDBWriter"
+		class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="sql">
+			<value>
+				<![CDATA[
+				  UPDATE ALL_SKU_ATTRIBUTES SET A0015 = CASE WHEN :A0015 IS NOT NULL AND :A0003='SKU Type Update' THEN :A0015 ELSE A0015 END,
+                  A0030 = CASE WHEN :A0030 IS NOT NULL AND :A0003='POG ID' THEN :A0030 ELSE A0030 END,
+                  A0052 = CASE WHEN :A0052 IS NOT NULL AND :A0003='Price Update' THEN :A0052 ELSE A0052 END,
+                  A0385 = CASE WHEN :A0385 IS NOT NULL AND :A0003='Stock Code Update' THEN :A0385 ELSE A0385 END
+                  WHERE A0012 = :A0012
+                ]]>
+			</value>
+		</property>
+		<!-- It will take care matching between object property and sql name parameter -->
+		<property name="itemSqlParameterSourceProvider">
+			<bean
+				class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+	</bean>
+	
+	<bean id="vendorProvidedAttrDBWriter"
+		class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="sql">
+			<value>
+				<![CDATA[
+                  UPDATE ALL_SKU_ATTRIBUTES SET A0017 = CASE WHEN :A0017 IS NOT NULL AND :A0003='Consignment Code Update' THEN :A0017 ELSE A0017 END,
+                  A0051 = CASE WHEN :A0051 IS NOT NULL AND :A0003='Consignment Cost Update' THEN :A0051 ELSE A0051 END
+                  WHERE A0012 = :A0012
+                ]]>
+			</value>
+		</property>
+		<!-- It will take care matching between object property and sql name parameter -->
+		<property name="itemSqlParameterSourceProvider">
+			<bean
+				class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider" />
+		</property>
+	</bean>
+	
+</beans>

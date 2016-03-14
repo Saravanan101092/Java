@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-4.0.xsd
+	">
+	<import resource="file:${SPRING_BATCH_CONFIG_DIR}/wercsDatabase.xml" />
+
+	<bean id="runSchedulerWercsRetry" class="com.staples.pim.delegate.wercs.steptowercs.retry.runner.RunSchedulerWercsRetry" >
+		<property name="datasource" ref="datasources" />
+		<property name="pipdatasource" ref="pipdatasources" />
+	</bean>
+	<bean id="runSchedulerPIPToStep" class="com.staples.pim.delegate.wercs.piptostep.listenerrunner.RunSchedulerPIPToStep" >
+		<property name="datasource" ref="datasources" />
+	</bean>
+	<bean id="runSchedulerCorpdmzToStep" class="com.staples.pim.delegate.wercs.corpdmztostep.runner.RunSchedulerCorpdmzToStep" >
+		<property name="datasource" ref="datasources" />
+	</bean>
+	<bean id="runSchedulerStepToWercs" class="com.staples.pim.delegate.wercs.steptowercs.runner.RunSchedulerStepToWercs" >
+		<property name="datasource" ref="datasources" />
+		<property name="pipdatasource" ref="pipdatasources" />
+	</bean>
+	<bean id="runSchedulerWercsMailNotification" class="com.staples.pim.delegate.wercs.mail.runner.RunSchedulerMailNotifications" >
+		<property name="datasource" ref="datasources" />
+	</bean>
+	<task:scheduled-tasks>
+
+	<task:scheduled ref="runSchedulerWercsRetry" method="run" cron="0 */2 * * * *" />
+	<task:scheduled ref="runSchedulerWercsRetry" method="run" cron="10 45 13 * * *" />
+	<task:scheduled ref="runSchedulerWercsRetry" method="run" cron="59 50 17 * * *" />
+		<task:scheduled ref="runSchedulerWercsRetry" method="run" cron="59 50 17 * * *" />
+		<task:scheduled ref="runSchedulerPIPToStep" method="run" cron="0 * * * * *" />
+		<task:scheduled ref="runSchedulerCorpdmzToStep" method="run" cron="0 * * * * *" />
+		<task:scheduled ref="runSchedulerWercsMailNotification" method="run" cron="0 0 8 * * *" />
+	<task:scheduled ref="runSchedulerWercsMailNotification" method="run" cron="0 0 13 * * *" />
+	<task:scheduled ref="runSchedulerWercsMailNotification" method="run" cron="0 0 18 * * *" />
+		<task:scheduled ref="runSchedulerStepToWercs" method="run" cron="0 * * * * *" />
+		<!--<task:scheduled ref="runSchedulerWercsMailNotification" method="run" cron="0 * * * * *" />-->
+	</task:scheduled-tasks>
+
+
+</beans>

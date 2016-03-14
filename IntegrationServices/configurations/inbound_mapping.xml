@@ -1,0 +1,3830 @@
+<Mapping>
+	<Attributes>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/SellingDivision</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Promotion Code</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0008</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Promotion Code</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/Proprietary</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Proprietary Code</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0011 </AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Proprietary Code</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>SKU</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0012</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>SKU</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ItemList/Manufacturer</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Model Number</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0013</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Model Number</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>NonInventory</EndElement>
+				<Description>SKU Type. Indicates Inventory level.</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0015</AttributeID>
+				<Attribute>NonInventory</Attribute>
+				<Description>SKU Type. Indicates Inventory level.</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>CodeDateProduct</EndElement>
+				<Description>Code Date Product</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0016</AttributeID>
+				<Attribute>CodeDateProduct</Attribute>
+				<Description>Code Date Product</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CostList/Cost/Consignment</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Consignment Code</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0017</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Consignment Code</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/DescriptionList/Description/Additional/Description</XPath>
+				<EndElement>Description</EndElement>
+				<Description>Full Discreption</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0018</AttributeID>
+				<Attribute>Description</Attribute>
+				<Description>Full Discreption</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/DescriptionList/Description</XPath>
+				<EndElement>Short</EndElement>
+				<Description>Item Short Description</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0019</AttributeID>
+				<Attribute>Short</Attribute>
+				<Description>Item Short Description</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/StatusList/Status/Retail</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Item Status Code</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0020</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Item Status Code</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/StatusList/Status/DotCom</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Dot Com Product Status</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0259</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Dot Com Product Status</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/StatusList/Status/Contract</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Contract Product Status</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0260</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Contract Product Status</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/StatusList/Status/Quill</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Quill Product Status</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0257</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Quill Product Status</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/DescriptionList/Description</XPath>
+				<EndElement>CashRegister</EndElement>
+				<Description>Cash Register Description</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0021</AttributeID>
+				<Attribute>CashRegister</Attribute>
+				<Description>Cash Register Description</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>MasterShipper</EndElement>
+				<Description>Master Shipper</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0022</AttributeID>
+				<Attribute>MasterShipper</Attribute>
+				<Description>Master Shipper</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>Imprinted</EndElement>
+				<Description>Imprinted Indicator</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0229</AttributeID>
+				<Attribute>Imprinted</Attribute>
+				<Description>Imprinted Indicator</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/Hierarchy/Division</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Item Division</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0024</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Item Division</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/Hierarchy/Department</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Item Department</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0025</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Item Department</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/Hierarchy/Class</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Item Class</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0026</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Item Class</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/SubClass</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Item sub-class</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0027</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Item sub-class</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Ret_Inv_Num</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>8</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0028</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Ret_Inv_Num</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Retail Product Manager Number</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>5</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0029</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Retail Product Manager Number</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Name</EndElement>
+				<Description>Retail Product Manager Name</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>5</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0248</AttributeID>
+				<Attribute>Name</Attribute>
+				<Description>Retail Product Manager Name</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Retail Product Specialist Number</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>6</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0249</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Retail Product Specialist Number</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Name</EndElement>
+				<Description>Retail Product Specialist Name</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>6</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0250</AttributeID>
+				<Attribute>Name</Attribute>
+				<Description>Retail Product Specialist Name</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Name</EndElement>
+				<Description>Retail Inventory Manager Name</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>8</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0303</AttributeID>
+				<Attribute>Name</Attribute>
+				<Description>Retail Inventory Manager Name</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Dot Com Product Manager Number</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>3</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0214</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Dot Com Product Manager Number</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Name</EndElement>
+				<Description>Dot Com Product Manager Name</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>3</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0251</AttributeID>
+				<Attribute>Name</Attribute>
+				<Description>Dot Com Product Manager Name</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Dot Com Product Specialist Number</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>4</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0252</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Dot Com Product Specialist Number</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Name</EndElement>
+				<Description>Dot Com Product Specialist Name</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>4</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0253</AttributeID>
+				<Attribute>Name</Attribute>
+				<Description>Dot Com Product Specialist Name</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Contract Product Manager Number</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0213</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Contract Product Manager Number</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Name</EndElement>
+				<Description>Contract Product Manger Name</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0254</AttributeID>
+				<Attribute>Name</Attribute>
+				<Description>Contract Product Manger Name</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Contract Product Specialist Number</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>2</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0255</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Contract Product Specialist Number</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Name</EndElement>
+				<Description>Contract Product Specialist Name</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>2</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0256</AttributeID>
+				<Attribute>Name</Attribute>
+				<Description>Contract Product Specialist Name</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>NAD Inventory Analyst Number</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>7</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0304</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>NAD Inventory Analyst Number</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ReferenceList/Reference</XPath>
+				<EndElement>Name</EndElement>
+				<Description>NAD Inventory Analyst Name</Description>
+				<Reference>
+					<NodeName>Reference</NodeName>
+					<NodeLevel>7</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0305</AttributeID>
+				<Attribute>Name</Attribute>
+				<Description>NAD Inventory Analyst Name</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/InventoryGroup</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Inventory Group Code</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0031</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Inventory Group Code</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/Planogram</XPath>
+				<EndElement>Id</EndElement>
+				<Description>Plan-o-gram ID</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0030</AttributeID>
+				<Attribute>Id</Attribute>
+				<Description>Plan-o-gram ID</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>HighRisk</EndElement>
+				<Description>High Risk indicator</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0033</AttributeID>
+				<Attribute>HighRisk</Attribute>
+				<Description>High Risk indicator</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>PricePrompt</EndElement>
+				<Description>POS price prompt</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0036</AttributeID>
+				<Attribute>PricePrompt</Attribute>
+				<Description>POS price prompt</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>PriceSensitive</EndElement>
+				<Description>price sensitive</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0037</AttributeID>
+				<Attribute>PriceSensitive</Attribute>
+				<Description>price sensitive</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>DateSensitive</EndElement>
+				<Description>Date Sensitive Indicator</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0234</AttributeID>
+				<Attribute>DateSensitive</Attribute>
+				<Description>Date Sensitive Indicator</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>FormValidate</EndElement>
+				<Description>Form Validate Indicator</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0038</AttributeID>
+				<Attribute>FormValidate</Attribute>
+				<Description>Form Validate Indicator</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/SkuSet</XPath>
+				<EndElement>Code</EndElement>
+				<Description>Set Code</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0041</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>Set Code</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/InventoryLocationList/InventoryLocation</XPath>
+				<EndElement>Id</EndElement>
+				<Description>Locator ID</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0042</AttributeID>
+				<Attribute>Id</Attribute>
+				<Description>Locator ID</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/QuantityList/Quantity/Selling</XPath>
+				<EndElement>UnitOfMeasure</EndElement>
+				<Description>Sell Unit/Ms</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0210</AttributeID>
+				<Attribute>UnitOfMeasure</Attribute>
+				<Description>Sell Unit/Ms</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/InventoryLocationList/InventoryLocation/QuantityList/PalletTier</XPath>
+				<EndElement>Quantity</EndElement>
+				<Description>Pallet tie qty</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0045</AttributeID>
+				<Attribute>Quantity</Attribute>
+				<Description>Pallet tie qty</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/InventoryLocationList/InventoryLocation/QuantityList/PalletHeight</XPath>
+				<EndElement>Quantity</EndElement>
+				<Description>Pallet Hi qty</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0046</AttributeID>
+				<Attribute>Quantity</Attribute>
+				<Description>Pallet Hi qty</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CostList/Cost/Consignment/Amount</XPath>
+				<EndElement>@Amount</EndElement>
+				<Description>Consign Cost</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0051</AttributeID>
+				<Attribute>@Amount</Attribute>
+				<Description>Consign Cost</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/PriceList/Price/Retail/Amount</XPath>
+				<EndElement>@Amount</EndElement>
+				<Description>Selling Price</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0052</AttributeID>
+				<Attribute>@Amount</Attribute>
+				<Description>Selling Price</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/DimensionList/Dimension/WHSP</XPath>
+				<EndElement>Quantity</EndElement>
+				<Description>Warehouse Ships Pack Units (WHSP)</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0065</AttributeID>
+				<Attribute>Quantity</Attribute>
+				<Description>Warehouse Ships Pack Units (WHSP)</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/QuantitiyList/Quantity/Purchase</XPath>
+				<EndElement>UnitofMeasure</EndElement>
+				<Description>Purchasing Unit of Measure</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0212</AttributeID>
+				<Attribute>UnitofMeasure</Attribute>
+				<Description>Purchasing Unit of Measure</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>DropShip</EndElement>
+				<Description>Drop Ship Indicator</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0230</AttributeID>
+				<Attribute>DropShip</Attribute>
+				<Description>Drop Ship Indicator</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishITem/Item/CodeList/Code/Disposition</XPath>
+				<EndElement>Code</EndElement>
+				<Description>NAD_Disposition</Description>
+				<Reference>
+					<NodeName>Disposition</NodeName>
+					<NodeLevel>2</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0191</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>NAD_Disposition</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/DimensionList/Dimension/SUCP</XPath>
+				<EndElement>Quantity</EndElement>
+				<Description>SUCP Quantity</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0067</AttributeID>
+				<Attribute>Quantity</Attribute>
+				<Description>SUCP Quantity</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/DimensionList/Dimension/Case</XPath>
+				<EndElement>Length</EndElement>
+				<Description>Master_Case_Pack_Length</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0068</AttributeID>
+				<Attribute>Length</Attribute>
+				<Description>Master_Case_Pack_Length</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/DimensionList/Dimension/Case</XPath>
+				<EndElement>Width</EndElement>
+				<Description>Master_Case_Pack_Width</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0069</AttributeID>
+				<Attribute>Width</Attribute>
+				<Description>Master_Case_Pack_Width</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/DimensionList/Dimension/Case</XPath>
+				<EndElement>Height</EndElement>
+				<Description>Master_Case_Pack_Height</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0070</AttributeID>
+				<Attribute>Height</Attribute>
+				<Description>Master_Case_Pack_Height</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/DimensionList/Dimension/Case</XPath>
+				<EndElement>Weight</EndElement>
+				<Description>Master_Case_Pack_Weight</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0071</AttributeID>
+				<Attribute>Weight</Attribute>
+				<Description>Master_Case_Pack_Weight</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/PartyList/Party/VendorList/Primary</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Vendor number</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0075</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Vendor number</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/ItemList/Vendor</XPath>
+				<EndElement>Description</EndElement>
+				<Description>Vendor Description</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0076</AttributeID>
+				<Attribute>Description</Attribute>
+				<Description>Vendor Description</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/PriceList/Price/ManufacturerList/Amount</XPath>
+				<EndElement>@Amount</EndElement>
+				<Description>List Price</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0077</AttributeID>
+				<Attribute>@Amount</Attribute>
+				<Description>List Price</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CostList/Cost/PO/Cost/Amount</XPath>
+				<EndElement>@Amount</EndElement>
+				<Description>PO Cost</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0078</AttributeID>
+				<Attribute>@Amount</Attribute>
+				<Description>PO Cost</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/UPCList/UPC</XPath>
+				<EndElement>Type</EndElement>
+				<Description>UPC Type</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0081</AttributeID>
+				<Attribute>Type</Attribute>
+				<Description>UPC Type</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/UPCList/UPC</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Inner Pack UPC</Description>
+				<Reference>
+					<NodeName>UPC</NodeName>
+					<NodeLevel>2</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0083</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Inner Pack UPC</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/UPCList/UPC</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>Pallet UPC</Description>
+				<Reference>
+					<NodeName>UPC</NodeName>
+					<NodeLevel>4</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0084</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>Pallet UPC</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/OriginCountry</XPath>
+				<EndElement>Code</EndElement>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+				<Reference>
+					<NodeName>OriginCountry</NodeName>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0085</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/OriginCountry</XPath>
+				<EndElement>Code</EndElement>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+				<Reference>
+					<NodeName>OriginCountry</NodeName>
+					<NodeLevel>2</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0086</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/OriginCountry</XPath>
+				<EndElement>Code</EndElement>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+				<Reference>
+					<NodeName>OriginCountry</NodeName>
+					<NodeLevel>3</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0087</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/OriginCountry</XPath>
+				<EndElement>Code</EndElement>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+				<Reference>
+					<NodeName>OriginCountry</NodeName>
+					<NodeLevel>4</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0088</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/OriginCountry</XPath>
+				<EndElement>Code</EndElement>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+				<Reference>
+					<NodeName>OriginCountry</NodeName>
+					<NodeLevel>5</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0089</AttributeID>
+				<Attribute>Code</Attribute>
+				<Description>County Of Origin occurs to a maximum of 5</Description>
+			</Step>
+		</Attribute>
+		
+		
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>Hazardous</EndElement>
+				<Description>HAZMAT FLAG*</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0090</AttributeID>
+				<Attribute>Hazardous</Attribute>
+				<Description>HAZMAT FLAG*</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>MSDSRequired</EndElement>
+				<Description>MSDS Reqd*</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0091</AttributeID>
+				<Attribute>MSDSRequired</Attribute>
+				<Description>MSDS Reqd*</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/MSDS</XPath>
+				<EndElement>URL</EndElement>
+				<Description>MSDS URL</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0092</AttributeID>
+				<Attribute>URL</Attribute>
+				<Description>MSDS URL</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/MSDS</XPath>
+				<EndElement>DocumentName</EndElement>
+				<Description>MSDS DOC NAME</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0093</AttributeID>
+				<Attribute>DocumentName</Attribute>
+				<Description>MSDS DOC NAME</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/MSDS/IssueDate</XPath>
+				<EndElement>Date</EndElement>
+				<Description>MSDS DT ISSUED</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0094</AttributeID>
+				<Attribute>Date</Attribute>
+				<Description>MSDS DT ISSUED</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/MSDS</XPath>
+				<EndElement>ProperShipName</EndElement>
+				<Description>PROPER SHIP NAME</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0095</AttributeID>
+				<Attribute>ProperShipName</Attribute>
+				<Description>PROPER SHIP NAME</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/MSDS</XPath>
+				<EndElement>TechnicalName</EndElement>
+				<Description>TECH NAME</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0120</AttributeID>
+				<Attribute>TechnicalName</Attribute>
+				<Description>TECH NAME</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/CodeList/Code/HazardousMaterialClass</XPath>
+				<EndElement>Name</EndElement>
+				<Description>HZ CLASS</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0097</AttributeID>
+				<Attribute>Name</Attribute>
+				<Description>HZ CLASS</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat/LabelRequirements</XPath>
+				<EndElement>Description</EndElement>
+				<Description>LABEL REQ</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0145</AttributeID>
+				<Attribute>Description</Attribute>
+				<Description>LABEL REQ</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+				<EndElement>Id</EndElement>
+				<Description>ID NUMBER</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0099</AttributeID>
+				<Attribute>Id</Attribute>
+				<Description>ID NUMBER</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+				<EndElement>PackingGRP</EndElement>
+				<Description>Packing GRP</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0100</AttributeID>
+				<Attribute>PackingGRP</Attribute>
+				<Description>Packing GRP</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+				<EndElement>SupplimentalInformation</EndElement>
+				<Description>Supplimental Information</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0101</AttributeID>
+				<Attribute>SupplimentalInformation</Attribute>
+				<Description>Supplimental Information</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>PrintFlag</EndElement>
+				<Description>PRINT FLAG</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0102</AttributeID>
+				<Attribute>PrintFlag</Attribute>
+				<Description>PRINT FLAG</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>FDA</EndElement>
+				<Description>Food and Drug Administration Registered</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0103</AttributeID>
+				<Attribute>FDA</Attribute>
+				<Description>Food and Drug Administration Registered</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>Aerosol</EndElement>
+				<Description>Aerosol Code</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0104</AttributeID>
+				<Attribute>Aerosol</Attribute>
+				<Description>Aerosol Code</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>UNPackagingRequired</EndElement>
+				<Description>UN (this is a HAZMAT field)</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0105</AttributeID>
+				<Attribute>UNPackagingRequired</Attribute>
+				<Description>UN (this is a HAZMAT field)</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+				<EndElement>Nmb</EndElement>
+				<Description>ERG (this is a HAZMAT field)</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0106</AttributeID>
+				<Attribute>Nmb</Attribute>
+				<Description>ERG (this is a HAZMAT field)</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>EnvironmentHazardous</EndElement>
+				<Description>ENV HAZARDOUS</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0107</AttributeID>
+				<Attribute>EnvironmentHazardous</Attribute>
+				<Description>ENV HAZARDOUS</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>Latex</EndElement>
+				<Description>LATEX.</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0108</AttributeID>
+				<Attribute>Latex</Attribute>
+				<Description>LATEX.</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat/TrueProduct</XPath>
+				<EndElement>Weight</EndElement>
+				<Description>TRUE PRD WEIGHT</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0109</AttributeID>
+				<Attribute>Weight</Attribute>
+				<Description>TRUE PRD WEIGHT</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat/TrueProduct</XPath>
+				<EndElement>Unit</EndElement>
+				<Description>TRUE PRD UNIT</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0110</AttributeID>
+				<Attribute>Unit</Attribute>
+				<Description>TRUE PRD UNIT</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+				<EndElement>FlammableLiquid</EndElement>
+				<Description>FLAMMABLE LIQUID</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0111</AttributeID>
+				<Attribute>FlammableLiquid</Attribute>
+				<Description>FLAMMABLE LIQUID</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+				<EndElement>ChemicalName</EndElement>
+				<Description>CHEMICAL NAME CAS</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0112</AttributeID>
+				<Attribute>ChemicalName</Attribute>
+				<Description>CHEMICAL NAME CAS</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>FlammableSolid</EndElement>
+				<Description>FLAMMABLE SOLID</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0113</AttributeID>
+				<Attribute>FlammableSolid</Attribute>
+				<Description>FLAMMABLE SOLID</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+				<EndElement>CombustibleLiquid</EndElement>
+				<Description>COMBUSTABLE LIQUID</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0114</AttributeID>
+				<Attribute>CombustibleLiquid</Attribute>
+				<Description>COMBUSTABLE LIQUID</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>Corrosive</EndElement>
+				<Description>CORROSIVE.</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0115</AttributeID>
+				<Attribute>Corrosive</Attribute>
+				<Description>CORROSIVE.</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>Liquid</EndElement>
+				<Description>IS LIQUID</Description>
+				<Reference>
+					<NodeName/>
+					<NodeLevel>1</NodeLevel>
+				</Reference>
+			</PimCore>
+			<Step>
+				<AttributeID>A0116</AttributeID>
+				<Attribute>Liquid</Attribute>
+				<Description>IS LIQUID</Description>
+			</Step>
+		</Attribute>
+		<Attribute>
+			<PimCore>
+				<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+				<EndElement>Liquid16Ounce</EndElement>
+				<Description>LIQUID>16OZ</Description>
+			<Reference>
+				<NodeName/>
+				<NodeLevel>1</NodeLevel>
+			</Reference>
+		</PimCore>
+		<Step>
+			<AttributeID>A0117</AttributeID>
+			<Attribute>Liquid16Ounce</Attribute>
+			<Description>LIQUID>16OZ</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/MSDS</XPath>
+		<EndElement>SecondaryLabelName</EndElement>
+		<Description>SECONDARY LBLNAME</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0118</AttributeID>
+		<Attribute>SecondaryLabelName</Attribute>
+		<Description>SECONDARY LBLNAME</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/MSDS</XPath>
+		<EndElement>SecondaryURL</EndElement>
+		<Description>SECONDARY LBL URL</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0119</AttributeID>
+		<Attribute>SecondaryURL</Attribute>
+		<Description>SECONDARY LBL URL</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/MSDS</XPath>
+		<EndElement>TechnicalDataSheet</EndElement>
+		<Description>TECHDATASHEET</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0096</AttributeID>
+		<Attribute>TechnicalDataSheet</Attribute>
+		<Description>TECHDATASHEET</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/MSDS</XPath>
+		<EndElement>TechnicalURL</EndElement>
+		<Description>TECH DATA URL</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0121</AttributeID>
+		<Attribute>TechnicalURL</Attribute>
+		<Description>TECH DATA URL</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ManufacturerItem</XPath>
+		<EndElement>Name</EndElement>
+		<Description>MANUFACTUR NAME</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0122</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>MANUFACTUR NAME</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>StateRestricted</EndElement>
+		<Description>State Restricted Indicator.</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0124</AttributeID>
+		<Attribute>StateRestricted</Attribute>
+		<Description>State Restricted Indicator.</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item</XPath>
+		<EndElement>RestrictedStateList</EndElement>
+		<Description>Restricted States List</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0125</AttributeID>
+		<Attribute>RestrictedStateList</Attribute>
+		<Description>Restricted States List</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Brand</XPath>
+		<EndElement>Name</EndElement>
+		<Description>BRAND NAME</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0126</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>BRAND NAME</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>Formaldehyde</EndElement>
+		<Description>FORMALDEHYDE.</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0127</AttributeID>
+		<Attribute>Formaldehyde</Attribute>
+		<Description>FORMALDEHYDE.</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+		<EndElement>IdentificationVersion</EndElement>
+		<Description>Identification Version</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0128</AttributeID>
+		<Attribute>IdentificationVersion</Attribute>
+		<Description>Identification Version</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+		<EndElement>ProductcontainerType</EndElement>
+		<Description>PRODUCT_CONTAINER_TYPE (HAZMAT field)</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0130</AttributeID>
+		<Attribute>ProductcontainerType</Attribute>
+		<Description>PRODUCT_CONTAINER_TYPE (HAZMAT field)</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+		<EndElement>LimitedQuantity</EndElement>
+		<Description>Limited Quantity</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0134</AttributeID>
+		<Attribute>LimitedQuantity</Attribute>
+		<Description>Limited Quantity</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>MarinePollutant</EndElement>
+		<Description>Marine Pollutant</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0135</AttributeID>
+		<Attribute>MarinePollutant</Attribute>
+		<Description>Marine Pollutant</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat</XPath>
+		<EndElement>FlashPoint</EndElement>
+		<Description>Flash Point</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0136</AttributeID>
+		<Attribute>FlashPoint</Attribute>
+		<Description>Flash Point</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>CleanAirAct</EndElement>
+		<Description>Clean Air Act</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0137</AttributeID>
+		<Attribute>CleanAirAct</Attribute>
+		<Description>Clean Air Act</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>ChemicalBan</EndElement>
+		<Description>Chemical Ban</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0138</AttributeID>
+		<Attribute>ChemicalBan</Attribute>
+		<Description>Chemical Ban</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>StateRegulations</EndElement>
+		<Description>Any State Regulations</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0139</AttributeID>
+		<Attribute>StateRegulations</Attribute>
+		<Description>Any State Regulations</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>OverTheCounter</EndElement>
+		<Description>OTC</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0140</AttributeID>
+		<Attribute>OverTheCounter</Attribute>
+		<Description>OTC</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>Proposition65</EndElement>
+		<Description>CA Proposition 65 Classification</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0141</AttributeID>
+		<Attribute>Proposition65</Attribute>
+		<Description>CA Proposition 65 Classification</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/RestrictionList/Restriction</XPath>
+		<EndElement>Name</EndElement>
+		<Description>Restrictions</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0142</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>Restrictions</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/RestrictionList/Restriction</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Other Restrictions Comments</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0143</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Other Restrictions Comments</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat/ClassRequirements</XPath>
+		<EndElement>Description</EndElement>
+		<Description>ClassRequirements</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0144</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>ClassRequirements</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>Recycled</EndElement>
+		<Description>Recycled Indicator</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0148</AttributeID>
+		<Attribute>Recycled</Attribute>
+		<Description>Recycled Indicator</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>RemanufacturedRefurbished</EndElement>
+		<Description>RefurbishedRemanufactured</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0149</AttributeID>
+		<Attribute>RemanufacturedRefurbished</Attribute>
+		<Description>RefurbishedRemanufactured</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ThresholdList/Threshold</XPath>
+		<EndElement>TotalRecycledContent</EndElement>
+		<Description>Total Recycled Content %</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0150</AttributeID>
+		<Attribute>TotalRecycledContent</Attribute>
+		<Description>Total Recycled Content %</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ThresholdList/Threshold</XPath>
+		<EndElement>PostConsumerContent</EndElement>
+		<Description>Post Consumer Content %</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0151</AttributeID>
+		<Attribute>PostConsumerContent</Attribute>
+		<Description>Post Consumer Content %</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Recycled</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Additional recycled detail</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0152</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Additional recycled detail</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>EcoEasy</EndElement>
+		<Description>Eco Easy qualified</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0153</AttributeID>
+		<Attribute>EcoEasy</Attribute>
+		<Description>Eco Easy qualified</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>ThirdPartyCertification</EndElement>
+		<Description>Third Party Certification</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0154</AttributeID>
+		<Attribute>ThirdPartyCertification</Attribute>
+		<Description>Third Party Certification</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>ProcurementAllowed</EndElement>
+		<Description>EPA Comprhnsive Procurement</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0155</AttributeID>
+		<Attribute>ProcurementAllowed</Attribute>
+		<Description>EPA Comprhnsive Procurement</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>EnergyStar</EndElement>
+		<Description>Energy Star qualified</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0156</AttributeID>
+		<Attribute>EnergyStar</Attribute>
+		<Description>Energy Star qualified</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>APNonToxic</EndElement>
+		<Description>AP certified non-toxic</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0157</AttributeID>
+		<Attribute>APNonToxic</Attribute>
+		<Description>AP certified non-toxic</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>ForestStewardshipCouncil</EndElement>
+		<Description>Forest Stewardship Council</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0158</AttributeID>
+		<Attribute>ForestStewardshipCouncil</Attribute>
+		<Description>Forest Stewardship Council</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>GreenSeal</EndElement>
+		<Description>Green Seal Certified</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0159</AttributeID>
+		<Attribute>GreenSeal</Attribute>
+		<Description>Green Seal Certified</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>AirQuality</EndElement>
+		<Description>Green Guard Indr Air Qual</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0160</AttributeID>
+		<Attribute>AirQuality</Attribute>
+		<Description>Green Guard Indr Air Qual</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/EPEATCertified</XPath>
+		<EndElement>Description</EndElement>
+		<Description>EPEAT certified</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0161</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>EPEAT certified</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/CradletoCradle</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Cradle to Cradle Certified</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0162</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Cradle to Cradle Certified</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>EcoLogo</EndElement>
+		<Description>Eco Logo</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0163</AttributeID>
+		<Attribute>EcoLogo</Attribute>
+		<Description>Eco Logo</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>EPADesign</EndElement>
+		<Description>EPA Design for Environment</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0164</AttributeID>
+		<Attribute>EPADesign</Attribute>
+		<Description>EPA Design for Environment</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/SCSIndoorAdvantage</XPath>
+		<EndElement>Description</EndElement>
+		<Description>SCS Indoor Advantage</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0165</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>SCS Indoor Advantage</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/LevelSustainableFurniture</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Level sustainable furniture</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0166</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Level sustainable furniture</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>SustainableForestInitiative</EndElement>
+		<Description>Sustainable foresty initi</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0167</AttributeID>
+		<Attribute>SustainableForestInitiative</Attribute>
+		<Description>Sustainable foresty initi</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/OtherEnvironmentCertification</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Other environmental Cert.</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0168</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Other environmental Cert.</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/EnvironmentalDesign</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Environmental design 1</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0171</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Environmental design 1</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/EnvironmentalDesign</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Environmental design 2</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0172</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Environmental design 2</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>Refillable</EndElement>
+		<Description>Refillable Indicator</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0173</AttributeID>
+		<Attribute>Refillable</Attribute>
+		<Description>Refillable Indicator</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>ChlorineFree</EndElement>
+		<Description>Chlorine free</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0174</AttributeID>
+		<Attribute>ChlorineFree</Attribute>
+		<Description>Chlorine free</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>BioBased</EndElement>
+		<Description>Bio based %</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0175</AttributeID>
+		<Attribute>BioBased</Attribute>
+		<Description>Bio based %</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/URLList</XPath>
+		<EndElement>HttpURL</EndElement>
+		<Description>Contact or weblink URL</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0177</AttributeID>
+		<Attribute>HttpURL</Attribute>
+		<Description>Contact or weblink URL</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/SpecialPackaging</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Special packing Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0178</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Special packing Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat/PrivateLabel</XPath>
+		<EndElement>Name</EndElement>
+		<Description>Retail Private Label flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0179</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>Retail Private Label flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat/PrivateLabel/Date</XPath>
+		<EndElement>Date</EndElement>
+		<Description>Change Effective date (Private label field)</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0184</AttributeID>
+		<Attribute>Date</Attribute>
+		<Description>Change Effective date (Private label field)</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat/PrivateLabel</XPath>
+		<EndElement>Brand</EndElement>
+		<Description>Private Label Brand</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0185</AttributeID>
+		<Attribute>Brand</Attribute>
+		<Description>Private Label Brand</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat/PrivateLabel</XPath>
+		<EndElement>SubBrand</EndElement>
+		<Description>Private Label Sub-brand</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0186</AttributeID>
+		<Attribute>SubBrand</Attribute>
+		<Description>Private Label Sub-brand</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/HazMat/PrivateLabel</XPath>
+		<EndElement>Name</EndElement>
+		<Description>NAD Private Label flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0183</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>NAD Private Label flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/TransactionList/Transaction/DateTimeList/Start</XPath>
+		<EndElement>DateTime</EndElement>
+		<Description>Received Date</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0187</AttributeID>
+		<Attribute>DateTime</Attribute>
+		<Description>Received Date</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/TransactionList/Transaction/DateTimeList/Start</XPath>
+		<EndElement>DateTime</EndElement>
+		<Description>Received Time</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0188</AttributeID>
+		<Attribute>DateTime</Attribute>
+		<Description>Received Time</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Disposition</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Store Disposition Code</Description>
+		<Reference>
+			<NodeName>Disposition</NodeName>
+			<NodeLevel>3</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0189</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Store Disposition Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Disposition</XPath>
+		<EndElement>Code</EndElement>
+		<Description>DC Disposition Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0190</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>DC Disposition Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Disposition</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Fulfillment Center disposition Code</Description>
+		<Reference>
+			<NodeName>Disposition</NodeName>
+			<NodeLevel>2</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0191</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Fulfillment Center disposition Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Category</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Category Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0398</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Category Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Recycled</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Recycled Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0194</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Recycled Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Recycled</XPath>
+		<EndElement>Nmb</EndElement>
+		<Description>Recycled Number</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0195</AttributeID>
+		<Attribute>Nmb</Attribute>
+		<Description>Recycled Number</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/PriceList/Price/List/</XPath>
+		<EndElement>Type</EndElement>
+		<Description>List Price Type</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0197</AttributeID>
+		<Attribute>Type</Attribute>
+		<Description>List Price Type</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/Unit</XPath>
+		<EndElement>Length</EndElement>
+		<Description>Selling_Unit_Length</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0237</AttributeID>
+		<Attribute>Length</Attribute>
+		<Description>Selling_Unit_Length</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/Unit</XPath>
+		<EndElement>Width</EndElement>
+		<Description>Selling_Unit_Width</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0238</AttributeID>
+		<Attribute>Width</Attribute>
+		<Description>Selling_Unit_Width</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/Unit</XPath>
+		<EndElement>Height</EndElement>
+		<Description>Selling_Unit_Height</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0239</AttributeID>
+		<Attribute>Height</Attribute>
+		<Description>Selling_Unit_Height</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/Unit</XPath>
+		<EndElement>Weight</EndElement>
+		<Description>Selling_Unit_Weight</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0240</AttributeID>
+		<Attribute>Weight</Attribute>
+		<Description>Selling_Unit_Weight</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/QuantityList/Quantity/Selling/</XPath>
+		<EndElement>UnitOfMeasure</EndElement>
+		<Description>Sell Unit of Measure - Retail</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0043</AttributeID>
+		<Attribute>UnitOfMeasure</Attribute>
+		<Description>Sell Unit of Measure - Retail</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/UPCList/UPC/</XPath>
+		<EndElement>Nmb</EndElement>
+		<Description>Selling Unit UPC</Description>
+		<Reference>
+			<NodeName>UPC</NodeName>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0080</AttributeID>
+		<Attribute>Nmb</Attribute>
+		<Description>Selling Unit UPC</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/UPCList/UPC/</XPath>
+		<EndElement>Nmb</EndElement>
+		<Description>Master Case Pack UPC</Description>
+		<Reference>
+			<NodeName>UPC</NodeName>
+			<NodeLevel>3</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0082</AttributeID>
+		<Attribute>Nmb</Attribute>
+		<Description>Master Case Pack UPC</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/Hazmat/LabelRequirements/</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Primary Hazard Label Required</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0098</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Primary Hazard Label Required</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ManufacturerItem/</XPath>
+		<EndElement>PartNmb</EndElement>
+		<Description>Manufacturer Part Number</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0123</AttributeID>
+		<Attribute>PartNmb</Attribute>
+		<Description>Manufacturer Part Number</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/Hazmat/ClassRequirements/</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Hazardous Subsidiary Risk Class 2</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0146</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Hazardous Subsidiary Risk Class 2</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/Hazmat/LabelRequirements/</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Hazardous Subsidiary Risk Label Required 2</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0147</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Hazardous Subsidiary Risk Label Required 2</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/OtherEnvironmentCertification/</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Other Environmental Certifications (2)</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0169</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Other Environmental Certifications (2)</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/Hazmat/PrivateLabel/Date/</XPath>
+		<EndElement>Date</EndElement>
+		<Description>Change Effective Date (Private label field) - Retail</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0180</AttributeID>
+		<Attribute>Date</Attribute>
+		<Description>Change Effective Date (Private label field) - Retail</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/Hazmat/PrivateLabel/</XPath>
+		<EndElement>Brand</EndElement>
+		<Description>Private Label Brand - Retail</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0181</AttributeID>
+		<Attribute>Brand</Attribute>
+		<Description>Private Label Brand - Retail</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/HazMatList/Hazmat/PrivateLabel/</XPath>
+		<EndElement>SubBrand</EndElement>
+		<Description>Private Label Sub-brand - Retail</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0182</AttributeID>
+		<Attribute>SubBrand</Attribute>
+		<Description>Private Label Sub-brand - Retail</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/QuantityList/Quantity/Selling/</XPath>
+		<EndElement>UnitOfMeasureQuantity</EndElement>
+		<Description>Sell Unit of Measure Quantity</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0211</AttributeID>
+		<Attribute>UnitOfMeasureQuantity</Attribute>
+		<Description>Sell Unit of Measure Quantity</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Color/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Color Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0217</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Color Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/QuantityList/Quantity/InnerPack/</XPath>
+		<EndElement>Quantity</EndElement>
+		<Description>Inner Pack Quantity</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0220</AttributeID>
+		<Attribute>Quantity</Attribute>
+		<Description>Inner Pack Quantity</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Brand/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Brand Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0224</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Brand Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator/</XPath>
+		<EndElement>DropShip</EndElement>
+		<Description>Drop Ship @ SKU Level Flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0230</AttributeID>
+		<Attribute>DropShip</Attribute>
+		<Description>Drop Ship @ SKU Level Flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator/</XPath>
+		<EndElement>Xitem</EndElement>
+		<Description>Contract X-Item % Flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0231</AttributeID>
+		<Attribute>Xitem</Attribute>
+		<Description>Contract X-Item % Flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Minority/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Minority Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0243</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Minority Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/MinoritySub/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Minority Sub Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0244</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Minority Sub Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ReferenceList/Reference/</XPath>
+		<EndElement>Nmb</EndElement>
+		<Description>Plan-o-gram Specialist Number (PSP#)</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0277</AttributeID>
+		<Attribute>Nmb</Attribute>
+		<Description>Plan-o-gram Specialist Number (PSP#)</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/NoteList/Note/ReferenceList/Reference/</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Comment</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0300</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Comment</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/QuantityList/Quantity/Additional/Quantity/</XPath>
+		<EndElement>Quantity</EndElement>
+		<Description>Ink Toner Ink / Toner Cartridge Qty</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0301</AttributeID>
+		<Attribute>Quantity</Attribute>
+		<Description>Ink Toner Ink / Toner Cartridge Qty</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/PartyList/Party/VendorList/Primary/</XPath>
+		<EndElement>Name</EndElement>
+		<Description>Vendor Name (derived)</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0302</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>Vendor Name (derived)</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/InnerPack/</XPath>
+		<EndElement>Height</EndElement>
+		<Description>Inner Pack Height</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0307</AttributeID>
+		<Attribute>Height</Attribute>
+		<Description>Inner Pack Height</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/InnerPack/</XPath>
+		<EndElement>Length</EndElement>
+		<Description>Inner Pack Length</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0308</AttributeID>
+		<Attribute>Length</Attribute>
+		<Description>Inner Pack Length</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/InnerPack/</XPath>
+		<EndElement>Weight</EndElement>
+		<Description>Inner Pack Weight</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0309</AttributeID>
+		<Attribute>Weight</Attribute>
+		<Description>Inner Pack Weight</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/InnerPack/</XPath>
+		<EndElement>Width</EndElement>
+		<Description>Inner Pack Width</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0310</AttributeID>
+		<Attribute>Width</Attribute>
+		<Description>Inner Pack Width</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/Pallet/</XPath>
+		<EndElement>Length</EndElement>
+		<Description>Pallet Length</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0311</AttributeID>
+		<Attribute>Length</Attribute>
+		<Description>Pallet Length</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DimensionList/Dimension/Pallet/</XPath>
+		<EndElement>Width</EndElement>
+		<Description>Pallet Width</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0312</AttributeID>
+		<Attribute>Width</Attribute>
+		<Description>Pallet Width</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator/</XPath>
+		<EndElement>Palletized</EndElement>
+		<Description>Palletized Flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0313</AttributeID>
+		<Attribute>Palletized</Attribute>
+		<Description>Palletized Flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator/</XPath>
+		<EndElement>StackableBottom</EndElement>
+		<Description>Stackable Bottom Flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0314</AttributeID>
+		<Attribute>StackableBottom</Attribute>
+		<Description>Stackable Bottom Flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator/</XPath>
+		<EndElement>StackableTop</EndElement>
+		<Description>Stackable Top Flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0315</AttributeID>
+		<Attribute>StackableTop</Attribute>
+		<Description>Stackable Top Flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/SellingDivision/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Dot Com Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0318</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Dot Com Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/SellingDivision/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Contract Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0319</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Contract Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/GLN/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Global Location Number - GLN</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0323</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Global Location Number - GLN</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/GTIN/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Global Trade Item Number - GTIN</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0324</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Global Trade Item Number - GTIN</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/SellingDivision/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Promo Period</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0330</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Promo Period</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator/</XPath>
+		<EndElement>EnvironmentalDesignFeatures</EndElement>
+		<Description>Environmental Design Features Flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0339</AttributeID>
+		<Attribute>EnvironmentalDesignFeatures</Attribute>
+		<Description>Environmental Design Features Flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/EnvironmentalDesign/</XPath>
+		<EndElement>Description</EndElement>
+		<Description>Other Environmental Details (Eco Friendly Other)</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0342</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>Other Environmental Details (Eco Friendly Other)</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/SKUList/SKU/Match/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Create (Add) Staples/Quill Match</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0384</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Create (Add) Staples/Quill Match</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Stock/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Stock Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0385</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Stock Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/SellingDivision/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Retail Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0404</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Retail Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ItemIDList/ItemID/</XPath>
+		<EndElement>Nmb</EndElement>
+		<Description>PIP Item Number</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0405</AttributeID>
+		<Attribute>Nmb</Attribute>
+		<Description>PIP Item Number</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DateList/Begin/</XPath>
+		<EndElement>Date</EndElement>
+		<Description>PreOrder Street Date</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0500</AttributeID>
+		<Attribute>Date</Attribute>
+		<Description>PreOrder Street Date</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator/</XPath>
+		<EndElement>PreOrder</EndElement>
+		<Description>Pre Order Flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0499</AttributeID>
+		<Attribute>PreOrder</Attribute>
+		<Description>Pre Order Flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/SellingDivision</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Contract Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0320</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Contract Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CostList/Cost/PO</XPath>
+		<EndElement>Channel</EndElement>
+		<Description>Channel ID</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0410</AttributeID>
+		<Attribute>Channel</Attribute>
+		<Description>Channel ID</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator/</XPath>
+		<EndElement>ContractXItem</EndElement>
+		<Description>Contract X-Item Flag</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0431</AttributeID>
+		<Attribute>ContractXItem</Attribute>
+		<Description>Contract X-Item Flag</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Disposition/</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Disposition Code</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0279</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Disposition Code</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Replenishment</XPath>
+		<EndElement>Status</EndElement>
+		<Description>Replenish</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0281</AttributeID>
+		<Attribute>Status</Attribute>
+		<Description>Replenish</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>GoodCondition</EndElement>
+		<Description>Good</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0283</AttributeID>
+		<Attribute>GoodCondition</Attribute>
+		<Description>Good</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>Boxed</EndElement>
+		<Description>Boxed</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0284</AttributeID>
+		<Attribute>Boxed</Attribute>
+		<Description>Boxed</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Disposition</XPath>
+		<EndElement>Code</EndElement>
+		<Description>DC1</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0289</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>DC1</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Disposition</XPath>
+		<EndElement>Code</EndElement>
+		<Description>DC2</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0290</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>DC2</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Disposition</XPath>
+		<EndElement>Code</EndElement>
+		<Description>DC3</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0291</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>DC3</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Disposition</XPath>
+		<EndElement>Code</EndElement>
+		<Description>DC4</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0292</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>DC4</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Disposition</XPath>
+		<EndElement>Code</EndElement>
+		<Description>DC5</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0293</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>DC5</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DateList/Additional/Date</XPath>
+		<EndElement>Date</EndElement>
+		<Description>RA Expiration Date</Description>
+		<Reference>
+			<NodeName>Date</NodeName>
+			<NodeLevel>2</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0299</AttributeID>
+		<Attribute>Date</Attribute>
+		<Description>RA Expiration Date</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>SignageRequired</EndElement>
+		<Description>Signage Required</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0399</AttributeID>
+		<Attribute>SignageRequired</Attribute>
+		<Description>Signage Required</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ItemList/Copy</XPath>
+		<EndElement>Name</EndElement>
+		<Description>Copy/Product Attribute Name</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0400</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>Copy/Product Attribute Name</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ItemList/Copy</XPath>
+		<EndElement>Code</EndElement>
+		<Description>Copy/Product Attribute Value</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0401</AttributeID>
+		<Attribute>Code</Attribute>
+		<Description>Copy/Product Attribute Value</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ItemList/Copy</XPath>
+		<EndElement>Id</EndElement>
+		<Description>Copy/Product Attribute Sequence</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0402</AttributeID>
+		<Attribute>Id</Attribute>
+		<Description>Copy/Product Attribute Sequence</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ItemIDList/ItemID</XPath>
+		<EndElement>Nmb</EndElement>
+		<Description>Quill Unique SKU</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0406</AttributeID>
+		<Attribute>Nmb</Attribute>
+		<Description>Quill Unique SKU</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Hierarchy/Division/</XPath>
+		<EndElement>Name</EndElement>
+		<Description>Division Name</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0408</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>Division Name</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/ItemList/Copy</XPath>
+		<EndElement>Nmb</EndElement>
+		<Description>Copy/Product Attribute Id</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0409</AttributeID>
+		<Attribute>Nmb</Attribute>
+		<Description>Copy/Product Attribute Id</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Hierarchy/Department/</XPath>
+		<EndElement>Name</EndElement>
+		<Description>Department Name</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0411</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>Department Name</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/CodeList/Code/Hierarchy/Class/</XPath>
+		<EndElement>Name</EndElement>
+		<Description>Class Name</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0412</AttributeID>
+		<Attribute>Name</Attribute>
+		<Description>Class Name</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/PriceList/Price/Clearance/Amount</XPath>
+		<EndElement>@Amount</EndElement>
+		<Description>Initial Price  - clearance price</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0416</AttributeID>
+		<Attribute>@Amount</Attribute>
+		<Description>Initial Price  - clearance price</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/PriceList/Price/Clearance</XPath>
+		<EndElement>EffectiveDate</EndElement>
+		<Description>Start Date - clearance start date</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0417</AttributeID>
+		<Attribute>EffectiveDate</Attribute>
+		<Description>Start Date - clearance start date</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/IndicatorList/Indicator</XPath>
+		<EndElement>DirectToVendorReturn</EndElement>
+		<Description>Direct to Vendor Return</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0418</AttributeID>
+		<Attribute>DirectToVendorReturn</Attribute>
+		<Description>Direct to Vendor Return</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DescriptionList/Description/Additional/Description/</XPath>
+		<EndElement>Description</EndElement>
+		<Description>POG Bulletin Date</Description>
+		<Reference>
+			<NodeName/>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0419</AttributeID>
+		<Attribute>Description</Attribute>
+		<Description>POG Bulletin Date</Description>
+	</Step>
+</Attribute>
+<Attribute>
+	<PimCore>
+		<XPath>PublishItem/Item/DateList/Additional/Date</XPath>
+		<EndElement>Date</EndElement>
+		<Description>Release Date</Description>
+		<Reference>
+			<NodeName>Date</NodeName>
+			<NodeLevel>1</NodeLevel>
+		</Reference>
+	</PimCore>
+	<Step>
+		<AttributeID>A0420</AttributeID>
+		<Attribute>Date</Attribute>
+		<Description>Release Date</Description>
+	</Step>
+</Attribute>
+</Attributes>
+</Mapping>

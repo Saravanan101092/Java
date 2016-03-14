@@ -1,0 +1,35 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/jdbc 
+	http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd">
+ 
+   	<bean id="datasources" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
+		<property name="connectionCachingEnabled" value="true" />
+		<property name="URL" value="jdbc:oracle:thin:@lpcmdndbv04.staples.com:51521/PCMDEV4" />
+		<property name="user" value="SB_USER" />
+		<property name="password" value="pcm_sbuser_d4" />
+		<property name="connectionCacheProperties">
+			<props merge="default">
+				<prop key="MinLimit">0</prop>
+				<prop key="MaxLimit">10</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+ 	<bean id="pipdatasources" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
+		<property name="connectionCachingEnabled" value="true" />
+		<property name="URL" value="jdbc:oracle:thin:@lspsdndbv02.staples.com:51521/ITPDEV" />
+		<property name="user" value="vendor_appl" />
+		<property name="password" value="green753dog" />
+		<property name="connectionCacheProperties">
+			<props merge="default">
+				<prop key="MinLimit">0</prop>
+				<prop key="MaxLimit">10</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/jms
+	http://www.springframework.org/schema/jms/spring-jms-3.0.xsd">
+ 
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+		<property name="location">
+			<value>file:${SPRING_BATCH_CONFIG_DIR}/config_env.properties</value>
+		</property>
+	</bean>
+
+	<!-- WebSphere MQ Connection Factory for Galaxy -->
+ 
+	<!--<bean id="pimoutConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${cnp.mq.hostname.pim.out}</value>
+		</property>
+		<property name="port">
+			<value>${cnp.mq.port.pim.out}</value>
+		</property>
+		<property name="channel">
+			<value>${cnp.mq.channel.pim.out}</value>
+		</property>
+		<property name="queueManager">
+			<value>${cnp.mq.queuemanager.pim.out}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>-->
+	
+	<bean id="stepoutConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${cnp.mq.hostname.step.out}</value>
+		</property>
+		<property name="port">
+			<value>${cnp.mq.port.step.out}</value>
+		</property>
+		<property name="channel">
+			<value>${cnp.mq.channel.step.out}</value>
+		</property>
+		<property name="queueManager">
+			<value>${cnp.mq.queuemanager.step.out}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>
+	
+
+	<!--<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<constructor-arg name="connectionFactory" ref="pimoutConnectionFactory"></constructor-arg>
+	</bean>--> 
+
+	<!-- Added for fail over scenario 	-->
+	<!--<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="pimoutConnectionFactory" /> 
+		<property name="sessionTransacted" value="true" />
+		<property name="destinationName" value="${cnp.mq.queuename.pim.out.itemcreate}" />		
+		<property name="exceptionListener" ref="exceptionListener" />
+		<property name="messageListener" ref="pimOutListenerItemCreate" />
+	</bean> -->
+	
+	<!--<bean id="pimOutListenerItemCreate"
+		class="com.staples.pim.delegate.copyandprint.listener.StepInboundConsumerItemCreate">
+		<property name="stepInboundProcessor" ref="stepInboundProcessor" />
+		</bean>-->
+		
+	<!-- Commented for Golden Gate Bridge-->
+	
+	<!--<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="pimoutConnectionFactory" /> 
+		<property name="sessionTransacted" value="true" />
+		<property name="destinationName" value="${cnp.mq.queuename.pim.out.itemupdate}" />		
+		<property name="exceptionListener" ref="exceptionListener" />
+		<property name="messageListener" ref="pimOutListenerItemUpdate" />
+	</bean>--> 
+ 	<!--<bean id="pimOutListenerItemUpdate"
+		class="com.staples.pim.delegate.copyandprint.listener.StepInboundConsumerItemUpdate">
+		<property name="stepInboundProcessor" ref="stepInboundProcessor" />
+		</bean>-->
+	<!-- Added for fail over scenario -->
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="stepoutConnectionFactory" /> 
+		<property name="sessionTransacted" value="true" />
+		<property name="destinationName" value="${cnp.mq.queuename.step.out.itemcreateupdate}" />		
+		<property name="exceptionListener" ref="exceptionListener" />
+		<property name="messageListener" ref="stepOutListenerItemCreateUpdate" />
+	</bean>
+	
+	
+
+	<bean id="exceptionListener" class="com.staples.pim.delegate.copyandprint.domain.CustomException">	
+	<property name="instanceName" ref="beanInstance" />	
+	</bean>
+	<bean id="beanInstance" class="java.lang.String">
+	<constructor-arg value="copyandprint"/>
+	</bean>	
+		<bean id="stepOutListenerItemCreateUpdate"
+		class="com.staples.pim.delegate.copyandprint.listener.StepOutboundConsumer">
+		<property name="stepOutboundProcessor" ref="stepOutboundProcessor" />
+		</bean>
+		
+	<!--<bean id="stepInboundProcessor"
+		class="com.staples.pim.delegate.copyandprint.inbound.domain.StepInboundProcessor" >
+			<property name="objectFactory" ref="objectFactory" /> 
+		</bean>-->
+		
+		
+		<bean id="stepOutboundProcessor"
+		class="com.staples.pim.delegate.copyandprint.processor.StepOutboundProcessor" >
+			<property name="objectFactory" ref="objectFactory" /> 
+			<property name="spreadSheetGencConfig" ref="spreadSheetGencConfig" /> 
+			<property name="spreadSheetGenProd" ref="spreadSheetGenProd" /> 
+			<property name="spreadSheetGenWeb" ref="spreadSheetGenWeb" /> 
+			<property name="stepOutboundWriter" ref="stepOutboundWriter" /> 
+		</bean>
+	<bean id="objectFactory"
+		class="com.staples.pcm.stepcontract.beans.ObjectFactory" ></bean>
+		
+		<bean id="spreadSheetGencConfig"
+		class="com.staples.pim.delegate.copyandprint.processor.SpreadSheetGenerationConfig" ></bean>
+		
+		<bean id="spreadSheetGenProd"
+		class="com.staples.pim.delegate.copyandprint.processor.SpreadSheetGenerationProduct" ></bean>
+		
+		<bean id="spreadSheetGenWeb"
+		class="com.staples.pim.delegate.copyandprint.processor.SpreadSheetGenerationWeb" ></bean>
+		
+		<bean id="stepOutboundWriter"
+		class="com.staples.pim.delegate.copyandprint.processor.StepOutboundWriter" ></bean>
+		
+
+	<!-- WebSphere MQ Connection Factory for STEP -->
+
+	<!--<bean id="stepInConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${cnp.mq.hostname.step.in}</value>
+		</property>
+		<property name="port">
+			<value>${cnp.mq.port.step.in}</value>
+		</property>
+		<property name="channel">
+			<value>${cnp.mq.channel.step.in}</value>
+		</property>
+		<property name="queueManager">
+			<value>${cnp.mq.queuemanager.step.in}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>-->
+<!--
+	<bean id="stepInMessageSender"
+		class="com.staples.pim.copyandprint.iteminbound.processor.StepInboundMsgSender" >
+			<property name="jmsDestinationItemCreate" ref="jmsDestinationItemCreate" />
+			<property name="jmsDestinationItemUpdate" ref="jmsDestinationItemUpdate" />
+			<property name="jmsTemplateStepItemCreate" ref="jmsTemplateStepItemCreate" />
+			<property name="jmsTemplateStepItemUpdate" ref="jmsTemplateStepItemUpdate" />
+	</bean>
+	-->
+	
+	<!--<bean id="springConnectionFactory"
+		class="org.springframework.jms.connection.SingleConnectionFactory">
+		<property name="targetConnectionFactory" ref="stepInConnectionFactory" />
+	</bean>-->
+
+
+</beans>

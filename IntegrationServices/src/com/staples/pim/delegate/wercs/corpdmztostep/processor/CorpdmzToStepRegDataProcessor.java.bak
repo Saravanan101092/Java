@@ -1,0 +1,102 @@
+package com.staples.pim.delegate.wercs.corpdmztostep.processor;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.batch.item.ItemProcessor;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+import com.staples.pim.base.common.logging.IntgSrvLogger;
+import com.staples.pim.delegate.datamigration.utils.DatamigrationAppConstants;
+import com.staples.pim.delegate.wercs.common.SBDatabaseHandlingService;
+import com.staples.pim.delegate.wercs.corpdmztostep.runner.RunSchedulerCorpdmzToStep;
+import com.staples.pim.delegate.wercs.model.WercsCollectionBean;
+
+public class CorpdmzToStepRegDataProcessor  implements ItemProcessor<WercsCollectionBean, WercsCollectionBean> {
+	
+	public static String A0080 = "A0080";
+	public static String STEPID =null;
+	public static String SKU =null;
+	public static String PIPID =null;
+	public static String UPC =null;
+	public static int value =346789;
+	public static String mailList ="Sankar.Suganya@Staples.com";
+	protected String clazzname = this.getClass().getName();
+	public SBDatabaseHandlingService databaseAccessor;
+	public static ApplicationContext context=new FileSystemXmlApplicationContext("file:C:/opt/stibo/SpringBatch/configurations/wercsDatabase.xml");
+	
+	public static IntgSrvLogger		itemTraceLogger						= IntgSrvLogger
+			.getInstance(DatamigrationAppConstants.FREEFORM_TRACE_LOGGER_WERCS_CORPDMZTOSTEP);
+	
+	@Override
+	public WercsCollectionBean process(WercsCollectionBean wercsregulatorydataFeedBean) throws Exception {
+	
+		String firstvalue=wercsregulatorydataFeedBean.getAttributeValueMap().get(A0080);
+		System.out.println("firstvalue : "+firstvalue);
+		SBDatabaseHandlingService dbAccess = (SBDatabaseHandlingService)CorpdmzToStepRegDataProcessor.context.getBean("databaseAccess");
+		List<String> UPCValue = dbAccess.getWercsUPCforRegData(firstvalue,itemTraceLogger);
+		//List<String> UPCValue=databaseAccessor.getDataBaseMasterTableConnect(firstvalue);		
+		//List<String> UPCValue=getDataBaseMasterTableConnect(firstvalue);
+		System.out.println("UPCValue : "+UPCValue);
+		WercsCollectionBean wercsCollectionBeanObj1 = new WercsCollectionBean();
+		Map<String, Map<String, String>> mapObject1 = new HashMap<String, Map<String, String>>();
+		
+		UPC=UPCValue.get(0);	
+		PIPID=UPCValue.get(1); 
+		SKU=UPCValue.get(2); 
+		STEPID=UPCValue.get(3);  
+		String GroupID=getGroupId(SKU,PIPID,STEPID);
+		
+		 List<String> wholeList = new ArrayList<String>();
+		 wholeList.add(GroupID);
+		 for(String string : wholeList)
+		 {
+		 wercsCollectionBeanObj1.setPIPID(string);
+		 }
+		if(UPC!=null && UPC.equals(firstvalue))
+		{
+				mapObject1.put(UPC, wercsregulatorydataFeedBean.getAttributeValueMap());
+				System.out.println("mapobject value : "+mapObject1);
+				
+				wercsCollectionBeanObj1.setAttributeValueMap(mapObject1.get(UPC));
+				System.out.println("wercscollectionbean : "+wercsCollectionBeanObj1.getAttributeValueMap());
+			}
+
+		return wercsCollectionBeanObj1;
+		
+	}
+
+	public static String getGroupId(String SKU, String PIPID, String STEPID) {
+		
+		String GroupId=null;
+		if(SKU!=null)
+		{
+			GroupId=SKU;
+		}
+		else if(PIPID!=null)
+		{
+			GroupId="Item-"+PIPID;
+		}
+		else if(STEPID!=null)
+		{
+			GroupId="Item-"+STEPID;
+		}
+
+		// TODO Auto-generated method stub
+		return GroupId;
+	}
+
+	
+	
+	
+}
+	        
+	
+	
+
+
+	

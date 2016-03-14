@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<appender name="InfoLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/pcmXMLbatch-info-0.0.1.log" />
+		<param name="datePattern" value="'.'yyyy-MM-dd" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!--
+			<param name="ConversionPattern" value="%n%d{dd MMM yyyy HH:mm:ss,SSS} [%t] %c %x %p- %m%n" />
+			 -->
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="DEBUG" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="INFO" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+	<appender name="ErrorLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/pcmXMLbatch-error-0.0.1.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="WARN" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ERROR" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="FATAL" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+	
+	<appender name="EHFLogger" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/ehf/SpringBatch_EHF.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	
+	<appender name="EHFLoggerCnP" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/ehf/SpringBatch_EHF_CnP.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	
+	<appender name="EHFLoggerWayFair" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/ehf/SpringBatch_EHF_WayFair.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	
+	<appender name="EHFLoggerCopyAttributes" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/ehf/SpringBatch_EHF_CopyAttributes.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	
+	<appender name="EHFLoggerProductItemsXSV" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/ehf/product_items/downstream/tmp/ProductItems_EHF.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="DEBUG" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="INFO" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ERROR" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+	
+	<appender name="EHFLoggerProductItemsFixLength" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/ehf/product_items/downstream/tmp/ProductItems_EHF.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="DEBUG" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="INFO" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ERROR" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+	
+	<appender name="EHFLoggerProductItemsExcel" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/ehf/product_items/downstream/tmp/ProductItems_EHF.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="DEBUG" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="INFO" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ERROR" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+	
+	<appender name="FreeformTraceLogger" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	
+	<appender name="FreeformTraceLoggerProduct" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_product.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerWayfairProduct" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_wayfair_product.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerWayfairPrice" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_wayfair_price.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+		<appender name="FreeformTraceLoggerWayfairImage" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_wayfair_image.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	
+	<appender name="FreeformTraceLoggerWayfairAttributeMetadata" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_wayfair_attributemetadata.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerWayfairAttributeFeed" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_wayfair_attributefeed.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerWayfairActiveSKU" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_wayfair_activesku.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerWayfairTaxonomy" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_wayfair_taxonomy.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerMerch" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_merch.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerResp" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_resp_matrix.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerVendorUPC" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_vendor_upc.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+		<appender name="FreeformTraceLoggerOracleFinancial" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_oraclefinancial.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerCnP" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_cnp.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	
+	<appender name="FreeformTraceLoggerItemUtility" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_itemutility.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerWholeSalerDotCom" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_WholeSalerDotCom.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>	
+	<appender name="FreeformTraceLoggerWholeSalerContract" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_WholeSalerContract.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>		
+	<appender name="FreeformTraceLoggerSTEPToWercs" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_wercs_steptowercs.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerWercsRetry" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_wercs_wercsretry.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="PDBErrorLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/xsv/pcmXMLbatch-error-0.0.1.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%n%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="WARN" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ERROR" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="FATAL" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+	
+	<appender name="Scene7ErrorLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/xsv/scene7-error-0.0.1.log" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%n%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="WARN" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ERROR" />
+		</filter>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="FATAL" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender>
+	<appender name="FreeformTraceLoggerCopyAttributesAttribute" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_copyattributes_attribute.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerCopyAttributesTaxonomy" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_copyattributes_taxonomy.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerCopyAttributesSpecData" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_copyattributes_specdata.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<appender name="FreeformTraceLoggerWercsCorpDMZtoSTEP" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/stibo/SpringBatch/logs/freeform/springbatch_trace_WercsCorpDMZtoSTEP.log" />
+		<param name="append" value="true" />
+        <param name="maxFileSize" value="10MB" />
+        <param name="maxBackupIndex" value="5" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} [%t] %c %x %p: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="levelToMatch" value="ALL" />
+		</filter>
+	</appender>
+	<logger name="org.hibernate">
+		<level value="fatal" />
+		<appender-ref ref="InfoLogger" />
+		<appender-ref ref="ErrorLogger" />
+	</logger>
+	<logger name="org.springframework">
+		<level value="error" />
+		<appender-ref ref="InfoLogger" />
+		<appender-ref ref="ErrorLogger" />
+	</logger>
+	<logger name="net.sf.ehcache">
+		<level value="fatal" />
+		<appender-ref ref="InfoLogger" />
+		<appender-ref ref="ErrorLogger" />
+	</logger>
+	<logger name="org.apache.commons">
+		<level value="fatal" />
+		<appender-ref ref="InfoLogger" />
+		<appender-ref ref="ErrorLogger" />
+	</logger>
+	<logger name="org.thymeleaf">
+		<level value="fatal" />
+		<appender-ref ref="InfoLogger" />
+		<appender-ref ref="ErrorLogger" />
+	</logger>
+	
+	<logger name="ehflogger" additivity="false">
+		<level value="all" />
+		<appender-ref ref="EHFLogger" />
+	</logger>
+	
+	<logger name="ehflogger.cnp" additivity="false">
+		<level value="all" />
+		<appender-ref ref="EHFLoggerCnP" />
+	</logger>
+	
+	<logger name="ehflogger.wayfair" additivity="false">
+		<level value="all" />
+		<appender-ref ref="EHFLoggerWayFair" />
+	</logger>
+	<logger name="ehflogger.copyattributes" additivity="false">
+		<level value="all" />
+		<appender-ref ref="EHFLoggerCopyAttributes" />
+	</logger>
+	<logger name="ehflogger.productitems.xsv" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="EHFLoggerProductItemsXSV" />
+	</logger>
+	
+	<logger name="ehflogger.productitems.fixlength" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="EHFLoggerProductItemsFixLength" />
+	</logger>
+	
+	<logger name="ehflogger.productitems.excel" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="EHFLoggerProductItemsExcel" />
+	</logger>
+	
+	<logger name="tracelogger" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLogger" />
+	</logger>
+	
+	
+	<logger name="tracelogger.product" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerProduct" />
+	</logger>
+	
+	<logger name="tracelogger.merch" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerMerch" />
+	</logger>
+	
+	<logger name="tracelogger.resp" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerResp" />
+	</logger>
+	
+	<logger name="tracelogger.vendorupc" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerVendorUPC" />
+	</logger>
+	
+	<logger name="tracelogger.cnp" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerCnP" />
+	</logger>
+	
+	<logger name="tracelogger.wayfairproduct" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWayfairProduct" />
+	</logger>
+	
+	<logger name="tracelogger.wayfairprice" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWayfairPrice" />
+	</logger>
+	
+	<logger name="tracelogger.wayfairimage" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWayfairImage" />
+	</logger>
+	
+	<logger name="tracelogger.wayfairtaxonomy" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWayfairTaxonomy" />
+	</logger>
+	
+	<logger name="tracelogger.wayfairactivesku" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWayfairActiveSKU" />
+	</logger>
+	
+	<logger name="tracelogger.wayfairattributefeed" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWayfairAttributeFeed" />
+	</logger>
+	
+	<logger name="tracelogger.wayfairattributemetadata" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWayfairAttributeMetadata" />
+	</logger>
+
+	<logger name="tracelogger.oracle.financial" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerOracleFinancial" />
+	</logger>
+	<logger name="tracelogger.itemutility" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerItemUtility" />
+	</logger>
+	<logger name="tracelogger.wholesalerdotcom" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWholeSalerDotCom" />
+	</logger>	
+	<logger name="tracelogger.wholesalercontract" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWholeSalerContract" />
+	</logger>		
+	<logger name="tracelogger.copyattributes.attributes" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerCopyAttributesAttribute" />
+	</logger>
+	<logger name="tracelogger.copyattributes.taxonomy" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerCopyAttributesTaxonomy" />
+	</logger>
+	<logger name="tracelogger.copyattributes.specdata" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerCopyAttributesSpecData" />
+	</logger>
+	<logger name="tracelogger.wercs.steptowercs" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerSTEPToWercs" />
+	</logger>
+	<logger name="tracelogger.wercs.wercsretry" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWercsRetry" />
+	</logger>
+	<logger name="tracelogger.wercscorpdmztostep" additivity="false">
+		<level value="all" />
+		<appender-ref ref="FreeformTraceLoggerWercsCorpDMZtoSTEP" />
+	</logger>
+	<logger name="com.staples.pcm.springbatch.xmltoxsv.model">
+		<level value="debug" />
+		<appender-ref ref="InfoLogger" />
+		<appender-ref ref="ErrorLogger" />
+	</logger>
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="InfoLogger" />
+		<appender-ref ref="ErrorLogger" />
+	</root>
+</log4j:configuration>

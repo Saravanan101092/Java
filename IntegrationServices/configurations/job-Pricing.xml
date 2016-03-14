@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.2.xsd
+	">
+ 
+	<context:component-scan base-package="com.staples.pcm.springbatch.pricing" />
+	
+  <import resource="file:${SPRING_BATCH_CONFIG_DIR}/database.xml" />
+  <import resource="file:${SPRING_BATCH_CONFIG_DIR}/context.xml" />
+ 
+ 
+	<job id="DBtoCSVJob" xmlns="http://www.springframework.org/schema/batch">
+		<step id="readDB">
+			<tasklet transaction-manager="transactionManager"
+				start-limit="1" allow-start-if-complete="false">
+				<chunk reader="databaseItemReader" 
+				writer="excelProductWriter" commit-interval="100">
+				</chunk>
+				  
+				<listeners>
+					<listener ref="excelProductWriter" />
+				</listeners>
+				
+			</tasklet>
+		</step>
+		
+		<listeners>
+			<listener ref="dBtoCSVJobListner" />
+		</listeners>
+		
+	</job>
+     <bean id="dBtoCSVJobListner" 
+          class="com.staples.pcm.springbatch.pricing.DBtoCSVJobListner" >
+          <property name="ds" ref="dataSource" />
+   
+	</bean> 	
+	
+
+	<!-- ItemReader which reads from database and returns the row mapped by rowMapper -->
+	<bean id="databaseItemReader"
+		class="org.springframework.batch.item.database.JdbcCursorItemReader"> 
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="sql">
+		  <value>
+            <![CDATA[        
+SELECT A0302,A0075_RET,D0285,A0214,Web_Super_Category,Web_Category,Web_Department,Web_Class,Web_Class_ID,STEP_Item_ID, D0086,D0085,A0077_RET,A0197,A0497_RET,A0024,A0025,A0026,A0012,A0076,A0123,A0013_RET,A0210,A0080,A0211,A0126,D0089  
+FROM ALL_SKU_ATTRIBUTES where Batch_Pricing_Status IS NOT NULL and Batch_Pricing_Status = 'In Progress'
+
+			]]>
+		  </value>
+		</property>
+		<property name="rowMapper"> 
+			<bean class="com.staples.pcm.springbatch.pricing.PricingPOJORowMapper" /> 
+		</property> 
+	</bean> 
+
+	<bean id="excelProductWriter" class="com.staples.pcm.springbatch.pricing.PricingExcelWriter">
+		<!-- write to this xlsx file -->
+	</bean>
+	<bean id="pricingPOJO" class="com.staples.pcm.springbatch.pricing.model.PricingPOJO" scope="prototype" />
+
+	<!-- 
+	<bean id="outputFile"
+		class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[outputFile]}" />
+	</bean>
+	 -->
+	<bean id="outputFile3"
+		class="org.springframework.core.io.FileSystemResource" scope="step">
+		<constructor-arg value="#{jobParameters[outputFile3]}" />
+	</bean>
+ 
+</beans>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:context="http://www.springframework.org/schema/context" 
+xmlns:jms="http://www.springframework.org/schema/jms" 
+xmlns:p="http://www.springframework.org/schema/p" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+http://www.springframework.org/schema/jms 
+http://www.springframework.org/schema/jms/spring-jms-3.0.xsd">
+ 
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+		<property name="location">
+			<value>file:${SPRING_BATCH_CONFIG_DIR}/config_env.properties</value>
+		</property>
+	</bean>
+
+
+	<!-- WebSphere MQ Connection Factory for STEP -->
+
+	<bean id="stepConnectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+		<property name="hostName">
+			<value>${mq.hostname.step}</value>
+		</property>
+		<property name="port">
+			<value>${mq.port.step}</value>
+		</property>
+		<property name="channel">
+			<value>${mq.channel.step}</value>
+		</property>
+		<property name="queueManager">
+			<value>${mq.queuemanager.step}</value>
+		</property>
+		<property name="transportType">
+			<value>1</value>
+		</property>
+	</bean>
+
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+  		<constructor-arg name="connectionFactory" ref="stepConnectionFactory" /> 
+  	</bean> 
+	 
+	<!--       <jms:listener-container container-type="default"
+		connection-factory="stepConnectionFactory" acknowledge="auto">
+		<jms:listener destination="${mq.queuename.step}" ref="stepListener"
+			method="onMessage"></jms:listener>
+	</jms:listener-container>
+	--> 
+	
+	 <!--  Added for to get unmarshaler
+  --> 
+  <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+    <property name="connectionFactory" ref="stepConnectionFactory" />   
+     <property name="sessionTransacted" value="true" />  
+    <property name="destinationName" value="${mq.queuename.step}" />   
+   <property name="messageListener" ref="stepListener" />     
+  </bean>
+	
+	<bean id="stepListener"
+		class="com.staples.pcm.msgreceiver.StepOutFileListener">
+	 <!--    <constructor-arg name="unmarshaller" ref="jaxb2Marshaller" />  -->
+	<!-- 	<constructor-arg  name="jaxb2Marshaller" ref="jaxb2Marshaller" /> -->
+	   	<property name="unmarshaller" ref="unmarshaller" />   
+	</bean>
+		
+	   <bean id="unmarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">      
+			<property name="classesToBeBound">            
+				<list>                 
+				 	<value>com.staples.pcm.springbatch.xmltoxsv.model.STEPProductInformation</value>          
+				 </list>         
+			</property>     
+	</bean>   
+	
+	<context:component-scan base-package="com.staples.pcm"></context:component-scan>
+
+</beans>

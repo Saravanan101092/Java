@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-4.0.xsd
+	">
+
+
+ <!-- <import resource="file:${SPRING_BATCH_CONFIG_DIR}/database.xml" /> -->
+
+  
+  <bean id="runScheduler" class="com.staples.pim.delegate.merchupdate.runner.MerchScheduler" />
+ 
+  <!-- Run every 5 seconds = 5,000 msec -->
+  <!-- Run every 1 minutes = 60,000 msec -->
+  <!-- Run every 10 minutes = 600,000 msec -->
+  <!-- Run every 1 hr = 3,600,000 msec -->
+  <!-- Run every 1 day = 86,400,000 msec -->
+  <task:scheduled-tasks>
+
+<!--
+	<task:scheduled ref="runScheduler" method="run" fixed-rate="60000" /> 
+-->
+	<task:scheduled ref="runScheduler" method="run" cron="0 * * * * *" />
+	
+	<!--
+	<task:scheduled ref="runScheduler3" method="run" cron="0 59 23 * * *" />
+	<task:scheduled ref="runScheduler" method="run" fixed-delay="60000" /> 
+	<task:scheduled ref="runScheduler" method="run" cron="*/300 * * * * *" />
+	-->
+   </task:scheduled-tasks>
+ 
+</beans>

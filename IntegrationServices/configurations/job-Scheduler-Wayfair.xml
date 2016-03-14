@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch
+	http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-4.0.xsd
+	">
+<!--
+  <context:component-scan base-package="com.staples.pcm.springbatch.xmltoxsv" />
+-->
+
+  <bean id="wayfairProductScheduler" class="com.staples.pim.delegate.wayfair.productupdate.runner.WayfairProductScheduler" />
+  <bean id="wayfairTaxonomyScheduler" class="com.staples.pim.delegate.wayfair.taxonomyupdate.runner.TaxonomyScheduler" />
+  <bean id="wayfairActiveSKUScheduler" class="com.staples.pim.delegate.wayfair.activeskuupdate.runner.ActiveSkuScheduler" />
+  <bean id="wayfairAttributeMetadataScheduler" class="com.staples.pim.delegate.wayfair.attributeupdate.runner.AttributeScheduler" />
+  <bean id="wayfairAttributeFeedScheduler" class="com.staples.pim.delegate.wayfair.categoryspecificattributeupdate.runner.CategorySpecificAttributeScheduler" />
+  <bean id="wayfairPricingScheduler" class="com.staples.pim.delegate.wayfair.priceupdate.runner.WayFairPriceScheduler" />
+  <bean id="wayfairImageScheduler" class="com.staples.pim.delegate.wayfair.imageupdate.runner.WayfairimageScheduler" />
+  <task:scheduled-tasks>
+  
+	<task:scheduled ref="wayfairProductScheduler" method="run" cron="0 */15 * * * *" />
+	<task:scheduled ref="wayfairTaxonomyScheduler" method="run" cron="0 */15 * * * *" />
+	<task:scheduled ref="wayfairActiveSKUScheduler" method="run" cron="0 */15 * * * *" />
+	<task:scheduled ref="wayfairAttributeMetadataScheduler" method="run" cron="0 */15 * * * *" />
+	<task:scheduled ref="wayfairAttributeFeedScheduler" method="run" cron="0 */15 * * * *" />
+	<task:scheduled ref="wayfairPricingScheduler" method="run" cron="0 */15 * * * *" />
+	<task:scheduled ref="wayfairImageScheduler" method="run" cron="0 */15 * * * *" />
+  
+  <!--
+	<task:scheduled ref="wayfairProductScheduler" method="run" cron="0 0 18 * * *" />
+	<task:scheduled ref="wayfairTaxonomyScheduler" method="run" cron="0 45 3 * * *" />
+	<task:scheduled ref="wayfairActiveSKUScheduler" method="run" cron="0 15 4 * * *" />
+	<task:scheduled ref="wayfairAttributeMetadataScheduler" method="run" cron="0 0 4 * * *" />
+	<task:scheduled ref="wayfairAttributeFeedScheduler" method="run" cron="0 0 21 * * *" />
+	<task:scheduled ref="wayfairPricingScheduler" method="run" cron="0 30 19 * * *" />
+	<task:scheduled ref="wayfairImageScheduler" method="run" cron="0 30 21 * * *" />
+	-->	
+	<!--
+	<task:scheduled ref="runScheduler2" method="run" cron="0 0 10 * * *" />
+	<task:scheduled ref="runScheduler" method="run" fixed-delay="60000" /> 
+	<task:scheduled ref="runScheduler" method="run" cron="*/300 * * * * *" />
+	-->
+   </task:scheduled-tasks>
+ 
+</beans>
