@@ -145,6 +145,7 @@ public class MainWindowFrame {
 		panel.add(comboBox);
 		
 		JButton btnBrowse = new JButton("Browse");
+		btnBrowse.setToolTipText("click to select file/folder.\r\nNote: Valid file extensions are xsv, csv, txt");
 		btnBrowse.setBounds(246, 6, 87, 23);
 		btnBrowse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -166,6 +167,7 @@ public class MainWindowFrame {
 		panel.add(scrollPane_1);
 		
 		textArea = new JTextArea();
+		textArea.setToolTipText("List of valid files(xsv, csv, txt)");
 		textArea.setFont(new Font("Verdana", Font.BOLD, 14));
 		textArea.setBackground(Color.PINK);
 		scrollPane_1.setViewportView(textArea);
@@ -389,7 +391,7 @@ public class MainWindowFrame {
 		panel.add(btnCancel);
 		
 		frmXsvpro.setBackground(Color.GRAY);
-		frmXsvpro.setTitle("XSVPro");
+		frmXsvpro.setTitle("XSVPro 2.0.1");
 		frmXsvpro.setFont(new Font("Tahoma", Font.BOLD, 13));
 		frmXsvpro.setBounds(100, 100, 785, 650);
 		frmXsvpro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -519,7 +521,8 @@ public class MainWindowFrame {
 		int result = filechooser.showOpenDialog(this.frmXsvpro);
 		if (result == JFileChooser.APPROVE_OPTION) {
 
-			String fileNames = "";
+			String fileNames = "Valid Files(xsv,csv,txt):\n";
+			String rejectedFileNames = "Files rejected due to invalid filetypes:\n";
 			File folder = filechooser.getSelectedFile();
 			if(folder.isDirectory()){
 				filesInFolder = folder.listFiles();
@@ -527,8 +530,10 @@ public class MainWindowFrame {
 				if(folder.getName().endsWith(".xsv") || folder.getName().endsWith(".csv") || folder.getName().endsWith(".txt")) {
 					fileNames +=folder.getName()+"\n";
 					validFiles.add(folder);
+					textArea.setText(fileNames);
+					
 				}else{
-					JOptionPane.showMessageDialog(this.frmXsvpro,"Cant process this type of extension. Sorry");
+					JOptionPane.showMessageDialog(this.frmXsvpro,"Files with this type of extension will not be processed. Valid types are xsv, csv and txt.");
 				}
 			}
 			if(filesInFolder != null){
@@ -536,12 +541,18 @@ public class MainWindowFrame {
 					if(filesInFolder[fileIterator].getName().endsWith(".xsv") || filesInFolder[fileIterator].getName().endsWith(".csv") || filesInFolder[fileIterator].getName().endsWith(".txt")){
 						fileNames += filesInFolder[fileIterator].getName() + "\n";
 						validFiles.add(filesInFolder[fileIterator]);
+					}else{
+						rejectedFileNames += filesInFolder[fileIterator].getName() + "\n";
 					}
 				
 				}
+				textArea.setText(fileNames);
 			}
+			textArea.setEditable(false);
+			ConsoleTextArea.setText(rejectedFileNames);
 			textField.setText(folder.getPath());
-			textArea.setText(fileNames);
+			textField.setEditable(false);
+			
 		}
 	}
 	
@@ -568,7 +579,7 @@ public class MainWindowFrame {
 			}catch(NumberFormatException nfe){
 				JOptionPane.showMessageDialog(this.frmXsvpro, "Please enter a valid line no.");
 			}
-			if(validFiles.size()>0){
+			if(validFiles !=null && validFiles.size()>0){
 				String firstRow = XSVProcessor.getOneRowFromIpFiles(validFiles,lineno);
 				if(!firstRow.equalsIgnoreCase("")){
 					DelimiterSelectionDialog delimiterDialog = new DelimiterSelectionDialog(this.frmXsvpro,firstRow,textField_1);
@@ -594,7 +605,7 @@ public class MainWindowFrame {
 			}catch(NumberFormatException nfe){
 				JOptionPane.showMessageDialog(this.frmXsvpro, "Please enter a valid line no.");
 			}
-			if(validFiles.size()>0){
+			if(validFiles !=null && validFiles.size()>0){
 				String firstRow = XSVProcessor.getOneRowFromIpFiles(validFiles,lineno);
 				if(!firstRow.equalsIgnoreCase("")){
 					headerTextPane.setEnabled(true);
@@ -619,7 +630,7 @@ public class MainWindowFrame {
 	
 	private void headerSelectfromLines(ActionEvent e){
 		if(rdbtnSelectFromFirst.isSelected()){
-			if(validFiles.size()>0){
+			if(validFiles !=null && validFiles.size()>0){
 				List<String> sampleRows = XSVProcessor.getFirstTenRows(validFiles);
 				Map<String,String> trimmedValues = XSVProcessor.trimheaders(sampleRows);
 				String[] headers = trimmedValues.keySet().toArray(new String[0]);
@@ -649,11 +660,11 @@ public class MainWindowFrame {
 	}
 	
 	private void cancelButtonAction(ActionEvent e){
-		
-		btnChooseFileContaining.setEnabled(false);
+		if(!textField_2.getText().equalsIgnoreCase("")){
 		textField_2.setEditable(false);
 		textField_3.setEditable(true);
 		textField_3.setEnabled(true);
+		}
 	}
 	
 	private void chooseFileContainingValues(ActionEvent e){
